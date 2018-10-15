@@ -1,0 +1,31 @@
+<html>
+  <body>
+
+    <form action="bug_reporter.php" method="post">
+      Name of Bug: <input type="text" name="name"><br>
+
+      Type of Bug:
+      <input type="radio" name="type" value="syntax" checked>Syntax Error<br>
+      <input type="radio" name="type" value="runtime">Runtime Error<br>
+      <input type="radio" name="type" value="logic">Logic Error<br>
+      <input type="radio" name="type" value="other">Other<br>
+
+      Severity:
+      <input type="radio" name="severity" value="low" checked>Low<br>
+      <input type="radio" name="severity" value="medium">Medium<br>
+      <input type="radio" name="severity" value="high">High<br>
+
+      Description of bug: <input type="text" name="description"><br>
+      Program you found the bug on: <input type="text" name="program"><br>
+
+      Browser you are using:
+      <input type="radio" name="browswer" value="chrome" checked>Google Chrome<br>
+      <input type="radio" name="browswer" value="firefox">Mozilla Firefox<br>
+      <input type="radio" name="browswer" value="explorer">Internet Explorer<br>
+      <input type="radio" name="browswer" value="other">Other<br>
+
+      <input type="submit">
+    </form>
+
+  </body>
+</html>
