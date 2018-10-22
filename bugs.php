@@ -1,8 +1,19 @@
 <?php
 	// Connect to database
-	include("../connection.php");
 	$db = new dbObj();
-	$connection =  $db->getConnstring();
+
+	header("Content-Type: application/json; charset=UTF-8");
+	header('Access-Control-Allow-Origin: *');
+
+	$host = "dagobah.engr.scu.edu";
+	$user = "eyale"; # enter your username
+	$password = "tenspot10"; # enter your password
+	$dbname = "sdb_" . $user;
+
+	$conn = new mysqli($host, $user, $password, $dbname);
+	if ($conn->connect_error) {
+		die("Connection failed: $conn->connection_error");
+	}
 
 	$request_method = $_SERVER["REQUEST_METHOD"];
 
