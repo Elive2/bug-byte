@@ -1,11 +1,9 @@
 <?php
 	// Connect to database
-	$db = new dbObj();
-
 	header("Content-Type: application/json; charset=UTF-8");
 	header('Access-Control-Allow-Origin: *');
 
-	$host = "dagobah.engr.scu.edu";
+	$host = "dbserver.engr.scu.edu";
 	$user = "eyale"; # enter your username
 	$password = "tenspot10"; # enter your password
 	$dbname = "sdb_" . $user;
@@ -39,10 +37,9 @@
 
 function get_bugs()
 	{
-		global $connection;
 		$query = "SELECT * FROM bugs_dev";
 		$response = array();
-		$result = mysqli_query($connection, $query);
+		$result = mysqli_query($conn, $query);
 
 		while($row = mysqli_fetch_array($result))
 		{
@@ -50,15 +47,13 @@ function get_bugs()
 		}
 
 		//header('Content-Type: application/json');
-		//echo json_encode($response);
-
-		echo $response;
+		echo json_encode($response);
 
 	}
 
 function post_bugs()
  {
-		global $connection;
+		global $conn;
 
 		//$data = json_decode(file_get_contents('php://input'), true);
 		$bug_name = $data["bug_name"];
@@ -74,7 +69,7 @@ function post_bugs()
 		severity='".$severity."', description='".$description."',program='".$program."',
 		browser='".$browser."',developer='".$assigned_developer."'";
 
-		if(mysqli_query($connection, $query))
+		if(mysqli_query($conn, $query))
 		{
 			$response = array(
 				'status' => 1,
@@ -90,15 +85,13 @@ function post_bugs()
 			);
 		}
 
-		echo $reponse;
-
 		//header('Content-Type: application/json');
-		//echo json_encode($response);
+		echo json_encode($response);
 	}
 
 function update_bugs($id)
 	{
-		//global $connection;
+		global $conn;
 		//$post_vars = json_decode(file_get_contents("php://input"),true);
 		$name = $_POST["name"];
 		$type = $_POST["type"];
@@ -112,7 +105,7 @@ function update_bugs($id)
 		severity='".$severity."', description='".$description."',program='".$program."',
 		browser='".$browser."',developer='".$assigned_developer."' WHERE id=".$id;
 
-		if(mysqli_query($connection, $query))
+		if(mysqli_query($conn, $query))
 		{
 			$response = array(
 			'status' => 1,
@@ -129,8 +122,6 @@ function update_bugs($id)
 		}
 
 		//header('Content-Type: application/json');
-		//echo json_encode($response);
-
-		echo $response;
+		echo json_encode($response);
 	}
 ?>
