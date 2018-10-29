@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/~eyale/bug-byte/static/js/runtime~main.0eadea07.js"
   },
   {
-    "revision": "2d0d72a8e3b232ff4835",
-    "url": "/~eyale/bug-byte/static/js/main.2d0d72a8.chunk.js"
+    "revision": "6b816bb10ff5c7625ccc",
+    "url": "/~eyale/bug-byte/static/js/main.6b816bb1.chunk.js"
   },
   {
-    "revision": "d846f00f47291ef7aef7",
-    "url": "/~eyale/bug-byte/static/js/1.d846f00f.chunk.js"
+    "revision": "279a5ec5da0f1951170e",
+    "url": "/~eyale/bug-byte/static/js/1.279a5ec5.chunk.js"
   },
   {
-    "revision": "2d0d72a8e3b232ff4835",
+    "revision": "6b816bb10ff5c7625ccc",
     "url": "/~eyale/bug-byte/static/css/main.533b24d3.chunk.css"
   },
   {
-    "revision": "ff712b8e2e68f3988107e4c364475c32",
+    "revision": "74a710ddf265e571c30595968eb1f124",
     "url": "/~eyale/bug-byte/index.html"
   }
 ];

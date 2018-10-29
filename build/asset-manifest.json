@@ -1,14 +1,14 @@
 {
   "main.css": "/~eyale/bug-byte/static/css/main.533b24d3.chunk.css",
-  "main.js": "/~eyale/bug-byte/static/js/main.2d0d72a8.chunk.js",
-  "main.js.map": "/~eyale/bug-byte/static/js/main.2d0d72a8.chunk.js.map",
-  "static/js/1.d846f00f.chunk.js": "/~eyale/bug-byte/static/js/1.d846f00f.chunk.js",
-  "static/js/1.d846f00f.chunk.js.map": "/~eyale/bug-byte/static/js/1.d846f00f.chunk.js.map",
+  "main.js": "/~eyale/bug-byte/static/js/main.6b816bb1.chunk.js",
+  "main.js.map": "/~eyale/bug-byte/static/js/main.6b816bb1.chunk.js.map",
+  "static/js/1.279a5ec5.chunk.js": "/~eyale/bug-byte/static/js/1.279a5ec5.chunk.js",
+  "static/js/1.279a5ec5.chunk.js.map": "/~eyale/bug-byte/static/js/1.279a5ec5.chunk.js.map",
   "runtime~main.js": "/~eyale/bug-byte/static/js/runtime~main.0eadea07.js",
   "runtime~main.js.map": "/~eyale/bug-byte/static/js/runtime~main.0eadea07.js.map",
   "static/media/logo.png": "/~eyale/bug-byte/static/media/logo.b2f62d0d.png",
   "static/css/main.533b24d3.chunk.css.map": "/~eyale/bug-byte/static/css/main.533b24d3.chunk.css.map",
   "index.html": "/~eyale/bug-byte/index.html",
-  "precache-manifest.2a156467bd406bd4b152538f2ac57ea1.js": "/~eyale/bug-byte/precache-manifest.2a156467bd406bd4b152538f2ac57ea1.js",
+  "precache-manifest.68cbc80a3de43052dc0728f9b12a5ce4.js": "/~eyale/bug-byte/precache-manifest.68cbc80a3de43052dc0728f9b12a5ce4.js",
   "service-worker.js": "/~eyale/bug-byte/service-worker.js"
 }
