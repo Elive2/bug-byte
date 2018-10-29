@@ -1,14 +1,13 @@
 {
-  "main.css": "/~eyale/coen174/bug-byte/build/static/css/main.533b24d3.chunk.css",
-  "main.js": "/~eyale/coen174/bug-byte/build/static/js/main.e240ebbd.chunk.js",
-  "main.js.map": "/~eyale/coen174/bug-byte/build/static/js/main.e240ebbd.chunk.js.map",
-  "static/js/1.8d09f672.chunk.js": "/~eyale/coen174/bug-byte/build/static/js/1.8d09f672.chunk.js",
-  "static/js/1.8d09f672.chunk.js.map": "/~eyale/coen174/bug-byte/build/static/js/1.8d09f672.chunk.js.map",
+  "main.css": "/~eyale/coen174/bug-byte/build/static/css/main.81b62cfe.chunk.css",
+  "main.js": "/~eyale/coen174/bug-byte/build/static/js/main.c83e6c00.chunk.js",
+  "main.js.map": "/~eyale/coen174/bug-byte/build/static/js/main.c83e6c00.chunk.js.map",
+  "static/js/1.9d1499fd.chunk.js": "/~eyale/coen174/bug-byte/build/static/js/1.9d1499fd.chunk.js",
+  "static/js/1.9d1499fd.chunk.js.map": "/~eyale/coen174/bug-byte/build/static/js/1.9d1499fd.chunk.js.map",
   "runtime~main.js": "/~eyale/coen174/bug-byte/build/static/js/runtime~main.c1b94131.js",
   "runtime~main.js.map": "/~eyale/coen174/bug-byte/build/static/js/runtime~main.c1b94131.js.map",
-  "static/media/logo.png": "/~eyale/coen174/bug-byte/build/static/media/logo.b2f62d0d.png",
-  "static/css/main.533b24d3.chunk.css.map": "/~eyale/coen174/bug-byte/build/static/css/main.533b24d3.chunk.css.map",
+  "static/css/main.81b62cfe.chunk.css.map": "/~eyale/coen174/bug-byte/build/static/css/main.81b62cfe.chunk.css.map",
   "index.html": "/~eyale/coen174/bug-byte/build/index.html",
-  "precache-manifest.fa3eda985a60e9bf24af6514cae520e4.js": "/~eyale/coen174/bug-byte/build/precache-manifest.fa3eda985a60e9bf24af6514cae520e4.js",
+  "precache-manifest.2ee9bf16a77a0df0f6bff720ad1bf415.js": "/~eyale/coen174/bug-byte/build/precache-manifest.2ee9bf16a77a0df0f6bff720ad1bf415.js",
   "service-worker.js": "/~eyale/coen174/bug-byte/build/service-worker.js"
 }
