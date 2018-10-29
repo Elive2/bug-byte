@@ -73,7 +73,7 @@ class Dev extends React.Component {
           </tr>
           {this.state.bugs.map((bug, index) =>
             <tr>
-              <th><div key={bug._id}>{bug.name}</div></th>
+              <th><div key={bug.id}>{bug.name}</div></th>
               <th>{bug.description}</th>
               <th>{bug.progress}</th>
               <th><Button key={bug.id} bsStyle="success" onClick={(ev, key) => this.handleProgress(ev, index)}>Progress</Button></th>
