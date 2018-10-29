@@ -16,9 +16,6 @@
                 {
                         case 'GET':
                                 get_bugs();
-                                //post_bugs();
-                                //$id = intval($_GET["id"]);
-                                //update_bugs($id);
                                 break;
                         case 'POST':
                                 post_bugs();
