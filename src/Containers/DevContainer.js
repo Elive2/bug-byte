@@ -3,22 +3,21 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
 var React = require('react');
-var server = "http://students.engr.scu.edu/~eyale/bug-byte/bugs/bugs.php";
+var server = "http://students.engr.scu.edu/~eyale/bug-byte/";
 
 class Dev extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bugs: [
-        {_id: 0, title: "eCampus Down", stage: "Not Started"},
-        {_id: 1, title: "Camino Down", stage: "In Progress"}
-      ]
+      bugs: [],
+      progress: ""
     };
   }
 
   handleProgress(event, index) {
     event.preventDefault();
 
+    /*
     var stateCopy = Object.assign({}, this.state);
 
     if (stateCopy.bugs[index].stage === "Not Started") {
@@ -30,6 +29,20 @@ class Dev extends React.Component {
     this.setState({
         bugs: stateCopy.bugs
     });
+    */
+
+    axios({
+      method: 'post',
+      url: server + '/bugs/bugs.php',
+      data: {
+        progress: this.state.progress
+      },
+      withCredentials: true
+    })
+    .then((resp) => {
+      console.log(resp.data);
+    })
+    .catch((error) => console.log(error));
   }
 
   componentDidMount() {
@@ -40,14 +53,10 @@ class Dev extends React.Component {
       withCredentials: true
     })
     .then((resp) => {
-      console.log(resp.data);
-      if (resp.data.success) {
-        console.log(resp.data.success);
-        console.log("Get bugs success!");
-      } else {
-        console.log(resp.data.error);
-        console.log("Could not obtain bugs");
-      }
+      console.log(resp.data[0].progress);
+      this.setState({
+        bugs: resp.data
+      });
     })
     .catch((error) => console.log(error));
   }
