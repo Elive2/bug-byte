@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './Header';
 import logo from './logo.png'
+import DevDash from './DevDash';
+import ManagerDash from './ManagerDash'
 import { Container, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button} from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, Jumbotron} from 'reactstrap';
 import { Form, FormGroup, Label, Input} from 'reactstrap';
@@ -121,6 +123,16 @@ class ClientDash extends React.Component{
 				        <ListGroupItem>Bug1</ListGroupItem>
 				      </ListGroup>
 						</Jumbotron>
+					</Col>
+				</Row>
+				<Row>
+					<Col sm="12" md={{ size: 6, offset: 3 }}>
+						<ManagerDash/>
+					</Col>
+				</Row>
+				<Row>
+					<Col sm="12" md={{ size: 6, offset: 3 }}>
+						<DevDash/>
 					</Col>
 				</Row>
 			</div>

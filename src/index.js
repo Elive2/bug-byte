@@ -4,8 +4,11 @@ import './index.css';
 //import {BrowserRouter} from 'react-router-dom';
 //import App from './components/App';
 import ClientDash from './components/ClientDash';
-import ManagerDash from './components/ManagerDash';
+import DevDash from './components/DevDash'
 
 //when index.js is served, the below render method is called
 //which selects the root element from index.html in ../public/
-ReactDOM.render(<ClientDash />, document.getElementById('root'));
+document.addEventListener("DOMContentLoaded", function(event) {
+    ReactDOM.render(<ClientDash />, document.getElementById('root'));
+	//ReactDOM.render(<DevDash />, document.getElementById('root'));
+  });

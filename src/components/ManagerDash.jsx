@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import {Row, Col, Jumbotron} from 'reactstrap';
-import Draggable from 'react-draggable';
 import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 
 
