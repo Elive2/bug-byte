@@ -1,9 +1,8 @@
 import React from 'react';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Switch,
-  Link
 } from 'react-router-dom';
 import ClientDash from './ClientDash';
 import ManagerDash from './ManagerDash';
@@ -15,9 +14,9 @@ import ManagerDash from './ManagerDash';
 
 
 const App = () => (
-  <Router basename={'/~eyale/bug-byte'}>
+  <Router>
     <Switch>
-      <Route path={'${process.env.PUBLIC_URL}/'} component={ClientDash} />
+      <Route exact path="/" component={ClientDash} />
       <Route path="/manager" component={ManagerDash}/>
       <Route path="/client" component={ClientDash}/>
       {/*

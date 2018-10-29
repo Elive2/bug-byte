@@ -25,9 +25,7 @@ class Header extends React.Component{
 			<header>
 				<Row>
 					<Col>
-						<Link to="/">
-							<img className="logo" src={logo}/>
-						</Link>
+						<img className="logo" src={logo}/>
 						<h2 className="name">Bug<br/>Byte </h2>
 					</Col>
 					<Col xs="6">

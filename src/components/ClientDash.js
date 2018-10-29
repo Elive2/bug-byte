@@ -129,4 +129,4 @@ class ClientDash extends React.Component{
 	}
 }
 
-export default ClientDash
+export default ClientDash;
