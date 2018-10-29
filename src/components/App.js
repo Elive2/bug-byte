@@ -15,7 +15,7 @@ import ManagerDash from './ManagerDash';
 
 
 const App = () => (
-  <Router basename={'/~eyale/coen174/bug-byte/build'}>
+  <Router basename={'/~eyale/bug-byte'}>
     <Switch>
       <Route path={'${process.env.PUBLIC_URL}/'} component={ClientDash} />
       <Route path="/manager" component={ManagerDash}/>

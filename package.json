@@ -10,7 +10,7 @@
     "react-scripts": "2.0.5",
     "reactstrap": "^6.5.0"
   },
-  "homepage": "http://students.engr.scu.edu/~eyale/coen174/bug-byte/build",
+  "homepage": "http://students.engr.scu.edu/~eyale/bug-byte",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

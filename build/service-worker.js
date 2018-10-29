@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/~eyale/coen174/bug-byte/build/precache-manifest.b4f071228e81abe141642ef2ba016c9e.js"
+  "/~eyale/bug-byte/precache-manifest.2a156467bd406bd4b152538f2ac57ea1.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/~eyale/coen174/bug-byte/build/index.html", {
+workbox.routing.registerNavigationRoute("/~eyale/bug-byte/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
