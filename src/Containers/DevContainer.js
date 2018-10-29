@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
 var React = require('react');
-var server = "http://students.engr.scu.edu/~eyale/bug-byte/";
+var server = "http://students.engr.scu.edu/~eyale/bug-byte2/bugs.php";
 
 class Dev extends React.Component {
   constructor(props) {
@@ -17,7 +17,6 @@ class Dev extends React.Component {
   handleProgress(event, index) {
     event.preventDefault();
 
-    /*
     var stateCopy = Object.assign({}, this.state);
 
     if (stateCopy.bugs[index].stage === "Not Started") {
@@ -29,27 +28,26 @@ class Dev extends React.Component {
     this.setState({
         bugs: stateCopy.bugs
     });
-    */
 
-    axios({
-      method: 'post',
-      url: server + '/bugs/bugs.php',
-      data: {
-        progress: this.state.progress
-      },
-      withCredentials: true
-    })
-    .then((resp) => {
-      console.log(resp.data);
-    })
-    .catch((error) => console.log(error));
+    // axios({
+    //   method: 'post',
+    //   url: server,
+    //   data: {
+    //     progress: this.state.progress
+    //   },
+    //   withCredentials: true
+    // })
+    // .then((resp) => {
+    //   console.log(resp.data);
+    // })
+    // .catch((error) => console.log(error));
   }
 
   componentDidMount() {
     //populate bugs field with bugs reported
     axios({
       method: 'get',
-      url: server + '/bugs/bugs.php',
+      url: server,
       withCredentials: true
     })
     .then((resp) => {
@@ -57,6 +55,7 @@ class Dev extends React.Component {
       this.setState({
         bugs: resp.data
       });
+      console.log(this.state.bugs);
     })
     .catch((error) => console.log(error));
   }
@@ -68,14 +67,16 @@ class Dev extends React.Component {
         <table>
           <tr>
             <th>Bugs</th>
+            <th>Description</th>
             <th>Progression Stage</th>
             <th>Progress</th>
           </tr>
           {this.state.bugs.map((bug, index) =>
             <tr>
-              {/*<th><div key={bug._id}><Link to={`/bugs/${bug._id}`}>{bug.title}</Link></div></th>*/}
-              <th>{bug.stage}</th>
-              <th><Button key={bug._id} bsStyle="success" onClick={(ev, key) => this.handleProgress(ev, index)}>Progress</Button></th>
+              <th><div key={bug._id}>{bug.name}</div></th>
+              <th>{bug.description}</th>
+              <th>{bug.progress}</th>
+              <th><Button key={bug.id} bsStyle="success" onClick={(ev, key) => this.handleProgress(ev, index)}>Progress</Button></th>
             </tr>)
           }
         </table>
