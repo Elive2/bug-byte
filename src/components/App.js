@@ -15,21 +15,18 @@ import ManagerDash from './ManagerDash';
 
 
 const App = () => (
-  <Router>
-    <div>
-      <main>
-        <Switch>
-          <Route exact path="/" component={ClientDash} />
-          <Route exact path="/manager" component={ManagerDash}/>
-          {/*
-          <Route path="/home" component={restricted(Home)} />
-          <Route path="/about" component={About} />
-          <Route component={NotFound} />
-          */}
-        </Switch>
-      </main>
-    </div>
-  </Router>
+  <Router basename={'/~eyale/coen174/bug-byte/build'}>
+    <Switch>
+      <Route path={'${process.env.PUBLIC_URL}/'} component={ClientDash} />
+      <Route path="/manager" component={ManagerDash}/>
+      <Route path="/client" component={ClientDash}/>
+      {/*
+      <Route path="/home" component={restricted(Home)} />
+      <Route path="/about" component={About} />
+      <Route component={NotFound} />
+      */}
+    </Switch>
+</Router>
 );
 
 export default App;
