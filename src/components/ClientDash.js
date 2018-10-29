@@ -29,6 +29,12 @@ class ClientDash extends React.Component{
     });
   }
 
+  componentDidMount() {
+    fetch('http://students.engr.scu.edu/~eyale/bug-byte2/bugs.php')
+      .then(response => response.json())
+      .then(data => this.setState({ data }));
+  }
+
   handleSubmit(event) {
   	//this.toggle()
   	//prevents the default action="" from begin called, instead we handle 
@@ -40,7 +46,7 @@ class ClientDash extends React.Component{
   	alert(data)
 
   	//post the FormData object to our backend
-  	fetch('http://students.engr.scu.edu/~eyale/bug-byte/bugs/bugs.php', {
+  	fetch('http://students.engr.scu.edu/~eyale/bug-byte2/bugs.php', {
   		method: 'POST',
   		body: data,
   	}).then(function(res){console.log(res)})
@@ -111,7 +117,7 @@ class ClientDash extends React.Component{
 						        {//<CardImg top width="100%" src={logo} alt="Card image cap" />
 						      		}
 						        <CardBody>
-						          <CardTitle>Welcome!</CardTitle>
+						          <CardTitle>welcome</CardTitle>
 						          <CardText>You haven't submitted a bug yet. To get started, click the button above!</CardText>
 						          <Button>Details</Button>
 						        </CardBody>
