@@ -17,7 +17,6 @@ import DevDash from './DevDash'
 
 const App = () => (
   <Router basename={'/~eyale/bug-byte'}>
-<<<<<<< HEAD
     <div>
       <main>
         <Switch>
@@ -34,19 +33,6 @@ const App = () => (
       </main>
     </div>
   </Router>
-=======
-    <Switch>
-      <Route path={'${process.env.PUBLIC_URL}/'} component={ClientDash} />
-      <Route path="/manager" component={ManagerDash}/>
-      <Route path="/client" component={ClientDash}/>
-      {/*
-      <Route path="/home" component={restricted(Home)} />
-      <Route path="/about" component={About} />
-      <Route component={NotFound} />
-      */}
-    </Switch>
-</Router>
->>>>>>> d4c7396a14a1e1cbaf92672ca7a139a4129e550a
 );
 
 export default App;
