@@ -131,16 +131,6 @@ class ClientDash extends React.Component{
 						</Jumbotron>
 					</Col>
 				</Row>
-				<Row>
-					<Col sm="12" md={{ size: 6, offset: 3 }}>
-						<ManagerDash/>
-					</Col>
-				</Row>
-				<Row>
-					<Col sm="12" md={{ size: 6, offset: 3 }}>
-						<DevDash/>
-					</Col>
-				</Row>
 			</div>
 			
 		);

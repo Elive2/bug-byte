@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  HashRouter,
+  Router,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -15,14 +15,13 @@ import DevDash from './DevDash'
 
 
 const App = () => (
-  <HashRouter history={ hashHistory }>
+  <BrowserRouter basename=''>
     <div>
       <main>
         <Switch>
           <Route path="/client" component={ClientDash} />
-          <Route exact path="/manager" component={ManagerDash}/>
-          <Route exact path="/" component={DevDash}/>
-          <Route path = {'${process.env.PUBLIC_URL/}'} component={DevDash} />
+          <Route path="/manager" component={ManagerDash}/>
+          <Route path="/dev" component={DevDash}/>
           {/*
           <Route path="/home" component={restricted(Home)} />
           <Route path="/about" component={About} />
@@ -31,7 +30,7 @@ const App = () => (
         </Switch>
       </main>
     </div>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 export default App;
