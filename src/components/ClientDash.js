@@ -10,6 +10,7 @@ import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 //TODO
 //[ ] verify posting to server works
 //[ ] load bugs associated with the user into cards
+var server = "http://students.engr.scu.edu/~eyale/bug-byte/bugs.php"
 
 class ClientDash extends React.Component{
 	constructor(props) {
@@ -31,7 +32,7 @@ class ClientDash extends React.Component{
 
   componentDidMount() {
   	console.log("fetching bugs")
-    fetch('http://localhost/bugs.php',
+    fetch(server,
     {
     	method: 'GET'
     })
@@ -50,7 +51,7 @@ class ClientDash extends React.Component{
   	this.toggle()
 
   	//post the FormData object to our backend
-  	fetch('http://localhost/bugs.php', {
+  	fetch(server, {
   		method: 'POST',
   		body: data,
   	}).then(response => response.json())

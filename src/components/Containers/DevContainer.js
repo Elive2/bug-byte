@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
 var React = require('react');
-var server = "http://localhost/bugs.php";
+var server = "http://students.engr.scu.edu/~eyale/bug-byte/bugs.php";
 
 class Dev extends React.Component {
   constructor(props) {

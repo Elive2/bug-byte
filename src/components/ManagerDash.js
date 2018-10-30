@@ -4,6 +4,7 @@ import {Row, Col, Jumbotron, Button} from 'reactstrap';
 import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 import {ListGroup, ListGroupItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
+var server = "http://students.engr.scu.edu/~eyale/bug-byte/bugs.php";
 
 class ManagerDash extends React.Component {
 	constructor(props) {
@@ -23,7 +24,7 @@ class ManagerDash extends React.Component {
 
   componentDidMount() {
   	console.log("fetching bugs from php")
-    fetch('http://localhost/bugs.php',
+    fetch(server,
     {
     	method: 'GET'
     })

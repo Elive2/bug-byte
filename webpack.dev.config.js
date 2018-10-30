@@ -38,7 +38,7 @@ module.exports = {
     //new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'API_URL': JSON.stringify("http://students.engr.scu.edu/~eyale/bug-byte/bugs.php")
+        'API_URL': JSON.stringify("http://localhost/bugs.php")
       }
     })
     // new webpack.DefinePlugin({
