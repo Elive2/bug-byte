@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import logo from './logo.png'
-import DevDash from './DevDash';
-import ManagerDash from './ManagerDash'
+//import logo from './logo.png'
 import { Container, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button} from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, Jumbotron} from 'reactstrap';
 import { Form, FormGroup, Label, Input} from 'reactstrap';
@@ -17,10 +15,12 @@ class ClientDash extends React.Component{
 	constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      bugs: []
     };
 
     this.toggle = this.toggle.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggle() {
@@ -30,9 +30,13 @@ class ClientDash extends React.Component{
   }
 
   componentDidMount() {
-    fetch('http://students.engr.scu.edu/~eyale/bug-byte2/bugs.php')
+  	console.log("fetching bugs")
+    fetch('http://localhost/bugs.php',
+    {
+    	method: 'GET'
+    })
       .then(response => response.json())
-      .then(data => this.setState({ data }));
+      .then(data => this.setState({bugs: data}))
   }
 
   handleSubmit(event) {
@@ -43,13 +47,14 @@ class ClientDash extends React.Component{
 
   	//create an obect which contains all the form data
   	const data = new FormData(event.target)
-  	alert(data)
+  	this.toggle()
 
   	//post the FormData object to our backend
-  	fetch('http://students.engr.scu.edu/~eyale/bug-byte2/bugs.php', {
+  	fetch('http://localhost/bugs.php', {
   		method: 'POST',
   		body: data,
-  	}).then(function(res){console.log(res)})
+  	}).then(response => response.json())
+      .then(data => console.log(data));
   }
 
 	render() {
@@ -111,23 +116,25 @@ class ClientDash extends React.Component{
 				<Row>
 					<Col sm="12" md={{ size: 6, offset: 3 }}>
 						<Jumbotron>
-							<ListGroup>
-				        <ListGroupItem>
-				        	<Card>
-						        {//<CardImg top width="100%" src={logo} alt="Card image cap" />
-						      		}
-						        <CardBody>
-						          <CardTitle>welcome</CardTitle>
-						          <CardText>You haven't submitted a bug yet. To get started, click the button above!</CardText>
-						          <Button>Details</Button>
-						        </CardBody>
-						      </Card>
-				        </ListGroupItem>
-				        <ListGroupItem>Bug4</ListGroupItem>
-				        <ListGroupItem>Bug3</ListGroupItem>
-				        <ListGroupItem>Bug2</ListGroupItem>
-				        <ListGroupItem>Bug1</ListGroupItem>
-				      </ListGroup>
+							{this.state.bugs.map(function(object, i) {
+								return (
+									<ListGroup>
+						        <ListGroupItem>
+						        	<Card>
+								        <CardBody>
+								          <CardTitle>{object['Name']}</CardTitle>
+								          <CardText>
+								          	Creator: {object['FirstName'] + object['LastName']}<br/>
+								          	Severity: {object['Severity']}<br/>
+								          	Description: {object['Description']}<br/>
+								          </CardText>
+								          <Button>Details</Button>
+								        </CardBody>
+								      </Card>
+						        </ListGroupItem>
+						      </ListGroup>
+								)
+							})}
 						</Jumbotron>
 					</Col>
 				</Row>

@@ -1,18 +1,25 @@
-# bug-byte
-COEN 174
+# minimal-react-webpack-babel-setup
 
-Start MySQL CLI on DC server:
+## Features
 
-mysql -h dbserver.engr.scu.edu -p -u eyale sdb_eyale
-password: tenspot10
+* //get the correct version of all dependencies
+* npm install
+* 
+* //build the app, output is placed in the dist/ directory
+* npm run build
+*
+* //copy everything in the dist directory to htdocs in XAMPP
+*
+* //visit http://192.168.64.2 in your browser to view the app
+*
+* //visit http://192.168.64.2/myphpadmin to view the mysql admin tool
 
-show tables;
 
-#the bugs table was created with this command
-CREATE TABLE bugs_dev (Name varchar(255), Type int, Severity int, Description text, Program varchar(255), Browser int, FirstName varchar(255), LastName varchar(255), DateTime datetime); 
+## Install and configure XAMPP
 
-#insert a single entry into the bugs 
-insert into bugs_dev (Name, Type, Severity, Description, Program, Browser, FirstName, LastName) values ("ecampus class not visible", 0, 2, "couldn't find class on ecampus", "ecampus", 0, "Eli", "Yale");
-
+* Visit the XAMPP website and install the 5.6.38 / PHP 5.6.38 version for mac
+* follow setup 
+* open the application
+* 
 
 

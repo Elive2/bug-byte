@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.png'
+//import logo from './logo.png'
 import '../index.css'
-import { Link } from 'react-router-dom'
 import { Container, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
 class Header extends React.Component{
@@ -18,14 +17,12 @@ class Header extends React.Component{
 	  this.setState({
 	    dropdownOpen: !this.state.dropdownOpen
 	  });
-	  console.log("toggle")
 	}
 	render() {
 		return (
 			<header>
 				<Row>
 					<Col>
-						<img className="logo" src={logo}/>
 						{/*<Link to="/">
 							<img className="logo" src={logo}/>
 						</Link>*/}

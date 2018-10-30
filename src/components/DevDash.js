@@ -1,4 +1,4 @@
-import Dev from "../Containers/DevContainer";
+import Dev from "./Containers/DevContainer";
 var React = require('react');
 
 
