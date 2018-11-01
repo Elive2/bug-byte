@@ -10,7 +10,7 @@ import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 //TODO
 //[ ] verify posting to server works
 //[ ] load bugs associated with the user into cards
-var server = "http://students.engr.scu.edu/~eyale/bug-byte/bugs.php"
+var server = process.env.API_URL + "bugs.php"
 
 class ClientDash extends React.Component{
 	constructor(props) {

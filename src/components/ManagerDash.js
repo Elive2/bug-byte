@@ -4,14 +4,17 @@ import {Row, Col, Jumbotron, Button} from 'reactstrap';
 import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 import {ListGroup, ListGroupItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
-var server = "http://students.engr.scu.edu/~eyale/bug-byte/bugs.php";
+var server = process.env.API_URL + "bugs.php"
 
 class ManagerDash extends React.Component {
 	constructor(props) {
 		super(props);
 		this.toggle = this.toggle.bind(this);
+		this.assign = this.toggle.bind(this);
 		this.state = {
       bugs: [],
+      bobBugs: [],
+      susanBugs: [],
       dropdownOpen: false
     };
 	}
@@ -30,6 +33,10 @@ class ManagerDash extends React.Component {
     })
       .then(response => response.json())
       .then(data => this.setState({bugs: data}))
+  }
+
+  assignBob(user, data) {
+  	console.log(user, data);
   }
 
 	render() {
@@ -57,7 +64,7 @@ class ManagerDash extends React.Component {
 											          <DropdownItem>Susan</DropdownItem>
 											        </DropdownMenu>
 								      			</Dropdown>
-								          	Creator of Bug: {object['FirstName'] + object['LastName']}<br/>
+								          	Creator of the world: {object['FirstName'] + object['LastName']}<br/>
 								          	Severity: {object['Severity']}<br/>
 								          	Description: {object['Description']}<br/>
 								          </CardText>
@@ -77,7 +84,7 @@ class ManagerDash extends React.Component {
 						        <CardBody>
 						          <CardTitle>Bob</CardTitle>
 						          <CardText>
-						          	Assigned Bugs
+						          	Assigned Bugs:
 						          </CardText>
 						        </CardBody>
 						      </Card>
@@ -87,7 +94,7 @@ class ManagerDash extends React.Component {
 						        <CardBody>
 						          <CardTitle>Susan</CardTitle>
 						          <CardText>
-						          	Assigned Bugs
+						          	Assigned Bugs:
 						          </CardText>
 						        </CardBody>
 						      </Card>
