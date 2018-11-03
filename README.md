@@ -45,4 +45,13 @@
 * open the application manager and start the server
 * 
 
+## SQL Notes:
+
+* DB credentials should not be stored directly in the PHP script, Instead they
+* are stored in an environment variable which I still have to figure out
+* or possibly a .ini file that can be parsed by the php
+*
+* The only thing to be wary of is running an untrustworthy child process which
+* may access all the environment varaibles of its parent, to make this safe run the
+* child process with 'env -i' to clear the environment
 

@@ -1,4 +1,11 @@
 <?php
+        //TODO: 
+        // [ ] - Login
+        // [ ] - Keep authenticated user in a SESSION variable
+        // [ ] - append client First Name and Latname to bug repot query
+        // [ ] - consider using Lumen/Laravel to resturcture the api
+        //        = would be easier to protect endpoints:
+
         // Connect to database
         header("Content-Type: application/json; charset=UTF-8");
         header('Access-Control-Allow-Origin: http://localhost:3000');
@@ -9,7 +16,7 @@
 
         $conn = new mysqli($host, $user, $password, $dbname);
         if ($conn->connect_error) {
-                die("Connection failed: $conn->connection_error");
+                echo json_encode($conn->connect_error);
         }
         $request_method = $_SERVER["REQUEST_METHOD"];
         switch($request_method)
