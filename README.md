@@ -47,6 +47,11 @@
 
 ## SQL Notes:
 
+* To create the database for xammp, visit localhost/phpmyadmin and import the .sql file
+*
+* To create the database from command line
+* mysql -u username -p database_name < bug_byte_dev.sql
+*
 * DB credentials should not be stored directly in the PHP script, Instead they
 * are stored in an environment variable which I still have to figure out
 * or possibly a .ini file that can be parsed by the php
