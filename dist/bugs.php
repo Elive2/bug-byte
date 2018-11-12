@@ -27,19 +27,23 @@
                                 get_bugs();
                                 break;
                         case 'POST':
-                                $data = json_decode(file_get_contents("php://input"), true);
-                                $cases = $data["cases"];
+                                $request = json_decode(file_get_contents('php://input'), TRUE);
+                                $cases = $request["cases"];
                                 if ($cases == "update_progress") {
-                                  $id = $data["id"];
-                                  $progress = $data["progress"];
-                                  update_progress($id, $progress);
-                                } else if ($cases == "login") {
-                                  $email = $data["email"];
-                                  $password = $data["password"];
-                                  login($email, $password);
+                                        $id = $request["id"];
+                                        $progress = $request["progress"];
+                                        update_progress($id, $progress);
+                                } elseif ($cases == "login") {
+                                        $email = $request["email"];
+                                        $password = $request["password"];
+                                        login($email, $password);
                                 }
-                                else if ($cases == "") {
-                                  post_bugs();
+                                elseif ($cases == "add_bug") {
+                                        //echo json_encode($request);
+                                        addBug($request["data"]);
+                                }
+                                else {
+                                        echo json_encode(array('res' => 'invalid cases field'));
                                 }
                                 break;
                         // case 'UDPATE_DEV':
@@ -71,16 +75,15 @@
                 echo json_encode($response);
         }
 
-        function addBug()
+        function addBug($formData)
         {
                 global $conn;
-                $data = json_decode(file_get_contents("php://input"),true);
-                $name = $data["name"];
-                $type = $data["type"];
-                $severity = $data["severity"];
-                $description = $data["description"];
-                $program = $data["program"];
-                $browser = $data["browser"];
+                $name = $formData["name"];
+                $type = $formData["type"];
+                $severity = $formData["severity"];
+                $description = $formData["description"];
+                $program = $formData["program"];
+                $browser = $formData["browser"];
                 $progress = 'Not Started';
                 $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress) VALUES ('$name',' $type',' $severity',' $description',' $program',' $browser','$progress')";
                 //echo json_encode(array('query' => $query));
