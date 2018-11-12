@@ -65,27 +65,14 @@ TODO
 * may access all the environment varaibles of its parent, to make this safe run the
 * child process with 'env -i' to clear the environment
 
-## PHP Backend API Notes
-*
-*  We dont use a php microframework to handle our routes and such. Instead we expect each request for bugs to
-*  be either a GET or POST to bugs.php. 
+## User Table:
 
-*  A GET simply returns all bugs.. will eventually need to filter
-*
-*  A POST must take the format:
-*
-*  {
-	method: post,
-	body: {
-		action: <form | update | delete>
-		data: {
-			//the data needed for the form. update, or delete
-	    }
-	}
-   }
-*
-*  
-*
-*
-* Advanatages of the method: Less code, no hassle setting up and learning framework
-* Disadvantages: Security Holes?? Coustom Middleware
+CREATE TABLE `users` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `bugs` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`username`, `password`, `bugs`) VALUES
+('test@scu.edu', 'test', 0);
+COMMIT;
