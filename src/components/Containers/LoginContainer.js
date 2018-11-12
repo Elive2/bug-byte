@@ -1,4 +1,5 @@
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import {Jumbotron, Row, Col} from 'reactstrap';
 import axios from 'axios';
 
 var server = process.env.API_URL + "bugs.php";
@@ -28,6 +29,7 @@ class LoginContainer extends React.Component {
   }
 
   handleLogin(event) {
+    console.log("logging in")
     event.preventDefault();
 
     axios({
@@ -62,19 +64,25 @@ class LoginContainer extends React.Component {
 
   render() {
     return (
-      <form onSubmit = {(ev) => this.handleLogin(ev)}>
-        <FormGroup controlId = "email" bsSize = "large">
-          <ControlLabel>Email</ControlLabel>
-          <FormControl autoFocus type = "email" value = {this.state.email} onChange = {(ev) => this.handleUserChange(ev)}/>
-        </FormGroup>
+      <Row>
+        <Col sm="12" md={{ size: 4, offset: 4 }}>
+          <Jumbotron>
+            <form onSubmit = {(ev) => this.handleLogin(ev)}>
+              <FormGroup controlId = "email" bsSize = "large">
+                <ControlLabel>Email</ControlLabel>
+                <FormControl autoFocus type = "email" value = {this.state.email} onChange = {(ev) => this.handleUserChange(ev)}/>
+              </FormGroup>
 
-        <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl value = {this.state.password} onChange = {(ev) => this.handlePassChange(ev)} type = "password"/>
-        </FormGroup>
+              <FormGroup controlId="password" bsSize="large">
+                  <ControlLabel>Password</ControlLabel>
+                  <FormControl value = {this.state.password} onChange = {(ev) => this.handlePassChange(ev)} type = "password"/>
+              </FormGroup>
 
-        <Button block bsSize = "large" disabled = {!this.validateEntries()} type = "submit">Login</Button>
-      </form>
+              <Button block bsSize = "large" disabled = {!this.validateEntries()} type = "submit">Login</Button>
+            </form>
+          </Jumbotron>
+        </Col>
+      </Row>
     );
   }
 }

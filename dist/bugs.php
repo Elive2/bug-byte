@@ -160,13 +160,24 @@
         function login($username, $password) {
           global $conn;
 
-          $query = "SELECT * FROM `users` WHERE username = '$username', password = '$password'";
-
-          if (mysqli_query($conn, $query)) {
-            $response = array(
-              'status' => "success",
-              'status_message' => 'Login Call was successful'
-            );
+          $query = "SELECT * FROM `users` WHERE username = '$username'";
+          $result = mysqli_query($conn, $query);
+          if ($result) {
+            $fields = mysqli_fetch_assoc($result);
+            if($fields['password'] == $password) {
+                $response = array(
+                'status' => "success",
+                'status_message' => 'Login Call was successful'
+                );
+            }
+            else {
+                $response = array(
+                'status' => "failure",
+                'status_message' => 'incorrect password',
+                'correct_password' => $fields['password']
+                );
+            }
+            
           } else {
             $response = array(
               'status' => "failure",

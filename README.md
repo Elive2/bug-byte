@@ -1,5 +1,10 @@
 # Bug-Byte
 
+TODO
+[x] - get form submit working with new schema
+[ ] - implement drag and drop for manager
+[ ] - php session
+
 ## Development Workflow
 
 * //get the correct version of all dependencies
