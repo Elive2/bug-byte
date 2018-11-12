@@ -5,6 +5,8 @@
         // [ ] - append client First Name and Latname to bug repot query
         // [ ] - consider using Lumen/Laravel to resturcture the api
         //        = would be easier to protect endpoints:
+        // https://code.tutsplus.com/tutorials/how-to-secure-a-rest-api-with-lumen--cms-27442
+        //
 
         // Connect to database
         header("Content-Type: application/json; charset=UTF-8");
@@ -25,11 +27,14 @@
                                 get_bugs();
                                 break;
                         case 'POST':
-                                post_bugs();
-                                break;
-                        case 'UDPATE':
-                                $id = intval($_GET["id"]);
-                                update_bugs($id);
+
+                                //determine the intent of the post request
+                                if ($_POST['action'] == "form") {
+                                        addBug();
+                                }
+                                elseif ($_POST['action'] == "delete") {
+                                        deleteBug($body["data"]);
+                                }
                                 break;
                         default:
                                 // Invalid Request Method
@@ -51,10 +56,10 @@
                 echo json_encode($response);
         }
 
-        function post_bugs()
+        function addBug()
         {
                 global $conn;
-                $data = $_POST;
+                $data = json_decode(file_get_contents("php://input"),true);
                 $name = $data["name"];
                 $type = $data["type"];
                 $severity = $data["severity"];
@@ -84,7 +89,7 @@
 		echo json_encode($response);
 	}
 
-function update_bugs($id)
+        function update_bugs($id)
         {
                 global $conn;
                 $post_vars = json_decode(file_get_contents("bug_form.html"),true);

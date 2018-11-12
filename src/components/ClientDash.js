@@ -48,12 +48,16 @@ class ClientDash extends React.Component{
 
   	//create an obect which contains all the form data
   	const data = new FormData(event.target)
+  	console.log(data)
   	this.toggle()
 
   	//post the FormData object to our backend
   	fetch(server, {
   		method: 'POST',
-  		body: data,
+  		body: {
+  			action: "form",
+  			data: data
+  		}
   	}).then(response => response.json())
       .then(data => console.log(data));
   }
