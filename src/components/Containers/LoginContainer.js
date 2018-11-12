@@ -2,7 +2,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import {Jumbotron, Row, Col} from 'reactstrap';
 import axios from 'axios';
 
-var server = process.env.API_URL + "bugs.php";
+var server = process.env.API_URL + "login.php";
 var React = require('react');
 
 class LoginContainer extends React.Component {
@@ -41,13 +41,6 @@ class LoginContainer extends React.Component {
         password: this.state.password
       },
       withCredentials: true
-    })
-    .then((resp) => {
-      if (resp.data.status == "success") {
-        console.log("Successfully logged in");
-      } else {
-        console.log("Failed to log in");
-      }
     })
     .catch((error) => console.log(error));
   }

@@ -17,13 +17,18 @@ class Dev extends React.Component {
   handleProgress(event, index) {
     event.preventDefault();
 
-    var new_index = index + 1;
     var prog;
+    console.log(this.state.bugs)
+    console.log(index)
 
-    if (this.state.bugs[index].progress === "Not Started") {
-      prog = "In Progress";
-    } else if (this.state.bugs[index].progress == "In Progress") {
-      prog = "Completed";
+    for (var key in this.state.bugs) {
+      if (this.state.bugs[key].id === index) {
+        if (this.state.bugs[key].progress === "Not Started") {
+          prog = "In Progress";
+        } else if (this.state.bugs[key].progress == "In Progress") {
+          prog = "Completed";
+        }
+      }
     }
 
     axios({
@@ -31,7 +36,7 @@ class Dev extends React.Component {
       url: server,
       data: {
         cases: "update_progress",
-        id: new_index,
+        id: index,
         progress: prog
       },
       withCredentials: true
@@ -88,7 +93,7 @@ class Dev extends React.Component {
               <th><div key={bug.id}>{bug.Name}</div></th>
               <th>{bug.Description}</th>
               <th>{bug.progress}</th>
-              {bug.progress === "Completed" ? <th><Button bsSize="large" disabled>Completed</Button></th> : <th><Button key={bug.id} bsStyle="success" onClick={(ev, key) => this.handleProgress(ev, index)}>Progress</Button></th>}
+              {bug.progress === "Completed" ? <th><Button bsSize="large" disabled>Completed</Button></th> : <th><Button key={bug.id} bsStyle="success" onClick={(ev, key) => this.handleProgress(ev, bug.id)}>Progress</Button></th>}
             </tr>)
           }
         </table>

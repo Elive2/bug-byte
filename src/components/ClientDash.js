@@ -17,7 +17,7 @@ class ClientDash extends React.Component{
     super(props);
     this.state = {
       modal: false,
-      bugs: []
+      bugs: [],
     };
 
     this.toggle = this.toggle.bind(this);
