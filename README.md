@@ -60,3 +60,14 @@
 * may access all the environment varaibles of its parent, to make this safe run the
 * child process with 'env -i' to clear the environment
 
+## User Table:
+
+CREATE TABLE `users` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `bugs` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`username`, `password`, `bugs`) VALUES
+('test@scu.edu', 'test', 0);
+COMMIT;
