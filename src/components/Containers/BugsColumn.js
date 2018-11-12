@@ -3,10 +3,12 @@ import {Button, Jumbotron} from 'reactstrap';
 import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 import {ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
+
 class BugsColumn extends React.Component {
 	constructor(props) {
 		super(props);
 		this.toggle = this.toggle.bind(this);
+		this.deleteBug = this.deleteBug.bind(this);
 		this.state = {
 			dropdownOpen: false
 		}
@@ -15,6 +17,11 @@ class BugsColumn extends React.Component {
 	  this.setState(prevState => ({
 	    dropdownOpen: !prevState.dropdownOpen
 	  }));
+  }
+
+  deleteBug() {
+  	
+
   }
 
   render() {

@@ -1,5 +1,5 @@
 <?php
-        //TODO: 
+        //TODO:
         // [ ] - Login
         // [ ] - Keep authenticated user in a SESSION variable
         // [ ] - append client First Name and Latname to bug repot query
@@ -27,15 +27,30 @@
                                 get_bugs();
                                 break;
                         case 'POST':
-
-                                //determine the intent of the post request
-                                if ($_POST['action'] == "form") {
-                                        addBug();
+                                $data = json_decode(file_get_contents("php://input"), true);
+                                $cases = $data["cases"];
+                                if ($cases == "update_progress") {
+                                  $id = $data["id"];
+                                  $progress = $data["progress"];
+                                  update_progress($id, $progress);
+                                } else if ($cases == "login") {
+                                  $email = $data["email"];
+                                  $password = $data["password"];
+                                  login($email, $password);
                                 }
-                                elseif ($_POST['action'] == "delete") {
-                                        deleteBug($body["data"]);
+                                else if ($cases == "") {
+                                  post_bugs();
                                 }
                                 break;
+                        // case 'UDPATE_DEV':
+                        //         $id = ["id"]);
+                        //         update_bugs($id);
+                        //         break;
+                        // case 'UPDATE_PROGRESS':
+                        //         $id = intval($_GET["id"]);
+                        //         $progress = intval($_GET["progress"]);
+                        //         update_progress($id, $progress);
+                        //         break;
                         default:
                                 // Invalid Request Method
                                 header("HTTP/1.0 405 Method Not Allowed");
@@ -114,6 +129,52 @@
 
                 header('Content-Type: application/json');
                 echo json_encode($response);
+        }
+
+        function update_progress($id, $progress) {
+          global $conn;
+
+          $query = "UPDATE bugs_dev SET progress = '".$progress."' WHERE id = $id";
+
+          if (mysqli_query($conn, $query)) {
+            $response = array(
+              'status' => 1,
+              'status_message' => 'Bug Progress Update Call was successful'
+            );
+          } else {
+            $response = array(
+              'status' => 0,
+              'status_message' => 'Bug Progress Update Call failed.'
+            );
+          }
+
+          mysqli_error($conn);
+
+          header('Content-Type: application/json');
+          echo json_encode($response);
+        }
+
+        function login($username, $password) {
+          global $conn;
+
+          $query = "SELECT * FROM `users` WHERE username = '$username', password = '$password'";
+
+          if (mysqli_query($conn, $query)) {
+            $response = array(
+              'status' => "success",
+              'status_message' => 'Login Call was successful'
+            );
+          } else {
+            $response = array(
+              'status' => "failure",
+              'status_message' => 'Login Call failed.'
+            );
+          }
+
+          mysqli_error($conn);
+
+          header('Content-Type: application/json');
+          echo json_encode($response);
         }
 
         mysqli_close($conn);
