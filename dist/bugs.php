@@ -33,7 +33,7 @@
                                         $id = $request["id"];
                                         $progress = $request["progress"];
                                         update_progress($id, $progress);
-                                } 
+                                }
                                 elseif ($cases == "add_bug") {
                                         //echo json_encode($request);
                                         addBug($request["data"]);
@@ -80,8 +80,9 @@
                 $description = $formData["description"];
                 $program = $formData["program"];
                 $browser = $formData["browser"];
+                $username = $_SESSION['username'];
                 $progress = 'Not Started';
-                $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress) VALUES ('$name',' $type',' $severity',' $description',' $program',' $browser','$progress')";
+                $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress, username) VALUES ('$name',' $type',' $severity',' $description',' $program',' $browser','$progress', '$username')";
                 //echo json_encode(array('query' => $query));
                 if(mysqli_query($conn, $query))
                 {
