@@ -4,8 +4,22 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: index.html");
-    exit;
+    if($_SESSION['type'] == 'developer') {
+        header("location: dev.php");
+        exit;
+    }
+    elseif($_SESSION['type'] == 'client') {
+        header("location: client.php");
+        exit;
+    }
+    elseif($_SESSION['type'] == 'manager') {
+        header("location: manager.php");
+        exit;
+    }
+    else {
+        header("location: index.html");
+        exit;        
+    }
 }
  
 // Include config file
@@ -65,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["type"] = "developer";                          
                             
                             // Redirect user to welcome page
-                            header("location: dev.html");
+                            header("location: dev.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";

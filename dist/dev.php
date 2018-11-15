@@ -1,6 +1,7 @@
 <?php
-  if($_SESSION['loggedin'] == false || $_SESSION['type'] != 'developer')
-    header("location: login.php")
+  if($_SESSION['loggedin'] == false || $_SESSION['type'] != 'developer') {
+    header("location: login.php");
+  }
 ?>
 
 <!DOCTYPE html>
