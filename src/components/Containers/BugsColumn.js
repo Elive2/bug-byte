@@ -1,52 +1,84 @@
 import React from 'react';
 import {Button, Jumbotron} from 'reactstrap';
-import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
+import {Card, CardBody, CardTitle, CardText, CardImg, Modal, ModalBody, ModalHeader} from 'reactstrap';
 import {ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+
+var server = process.env.API_URL
 
 class BugsColumn extends React.Component {
 	constructor(props) {
 		super(props);
 		this.toggle = this.toggle.bind(this);
+		this.deleteBug = this.deleteBug.bind(this);
+		//this.asssignBug = this.assignBug.bind(this);
 		this.state = {
-			dropdownOpen: false
+			modal: false
 		}
 	}
   toggle() {
-	  this.setState(prevState => ({
-	    dropdownOpen: !prevState.dropdownOpen
-	  }));
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
+  deleteBug() {
+  	
+
+  }
+
+  assignBug(event, bugID, devUsername) {
+  	event.preventDefault();
+  	
+  	fetch(server+'devs.php', {
+  		method: 'POST',
+  		headers: {
+  			"Content-Type" : "application/json",
+  		},
+  		body: JSON.stringify({
+  			cases: "assign_dev",
+  			bugID: bugID,
+  			devUsername: devUsername
+  		})
+  	}).then(response => response.json())
+      .then(data => {
+      	console.log(data);
+      	this.forceUpdate();
+      });
   }
 
   render() {
 		return (
-			<Jumbotron>
-				<h3>Pending Bugs</h3>
-				{this.props.data.map((object, i) => {
-					return (
-		      	<Card key={i}>
-			        <CardBody>
-			          <CardTitle>{object['Name']}</CardTitle>
-			          <CardText>
-			          	Creator: {object['FirstName'] + object['LastName']}<br/>
-			          	Severity: {object['Severity']}<br/>
-			          	Description: {object['Description']}<br/>
-			          </CardText>
-			          <Button color="danger" onClick={this.deleteBug} key={i}>Delete Bug</Button>{' '}
-			          <ButtonDropdown group isOpen={this.state.dropdownOpen} toggle={this.toggle} id="profile">
-					        <DropdownToggle caret>
-					          Developer
-					        </DropdownToggle>
-					        <DropdownMenu>
-					          <DropdownItem>Bob</DropdownItem>
-					          <DropdownItem divider />
-					          <DropdownItem>Susan</DropdownItem>
-					        </DropdownMenu>
-		      			</ButtonDropdown>
-			        </CardBody>
-			      </Card>
-					)
-				})}
-			</Jumbotron>
+			<div>
+				<Jumbotron>
+					<h3>Pending Bugs</h3>
+					{this.props.bugs.map((bugObject, i) => {
+						return (
+				      	<Card key={i}>
+					        <CardBody>
+					          <CardTitle>{bugObject['Name']}</CardTitle>
+					          <CardText>
+					          	Creator: {bugObject['FirstName'] + bugObject['LastName']}<br/>
+					          	Severity: {bugObject['Severity']}<br/>
+					          	Description: {bugObject['Description']}<br/>
+					          </CardText>
+					          <Button color="danger" onClick={this.deleteBug} key={i}>Delete Bug</Button>{' '}
+					          <br/>
+					          <br/>
+					          {this.props.devs.map((devObject, j) => {
+							    		return (
+							    			<div>
+								    			<Button color="success" onClick={(ev, key) => this.assignBug(ev, bugObject['id'], devObject['username'])} key={bugObject['id']}>{devObject['username']}</Button>
+								    			<br/>
+								    			<br/>
+							    			</div>
+							    		)
+							    	})}
+					        </CardBody>
+					      </Card>
+						)
+					})}
+				</Jumbotron>
+			</div>
 		)
 	}
 }

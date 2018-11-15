@@ -12,28 +12,30 @@ class DevelopersColumn extends React.Component {
 		return (
 			<Jumbotron>
 				<h3>Developers</h3>
-				<ListGroup>
-					<ListGroupItem>
-			    	<Card>
+				{this.props.devs.map((devObject, i) => {
+					return (
+		      	<Card key={i}>
 			        <CardBody>
-			          <CardTitle>Bob</CardTitle>
+			          <CardTitle>{devObject['username']}</CardTitle>
 			          <CardText>
 			          	Assigned Bugs:
+			          	<ListGroup>
+				          	{this.props.bugs.map((bugObject,j) => {
+				          		if (bugObject['developer'] == devObject['username']) {
+					          		return (
+					          			<ListGroupItem>{bugObject['Name']}</ListGroupItem>
+					          		)
+					          	}
+					          	else {
+					          		return ('')
+					          	}
+				          	})}
+			          	</ListGroup>
 			          </CardText>
 			        </CardBody>
 			      </Card>
-			    </ListGroupItem>
-			    <ListGroupItem>
-			    	<Card>
-			        <CardBody>
-			          <CardTitle>Susan</CardTitle>
-			          <CardText>
-			          	Assigned Bugs:
-			          </CardText>
-			        </CardBody>
-			      </Card>
-			    </ListGroupItem>
-			  </ListGroup>
+					)
+				})}
 			</Jumbotron>
 		)
 	}

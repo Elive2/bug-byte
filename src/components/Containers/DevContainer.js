@@ -17,30 +17,47 @@ class Dev extends React.Component {
   handleProgress(event, index) {
     event.preventDefault();
 
-    var stateCopy = Object.assign({}, this.state);
+    var prog;
+    console.log(this.state.bugs)
+    console.log(index)
 
-    if (stateCopy.bugs[index].progress === "Not Started") {
-      stateCopy.bugs[index].progress = "In Progress";
-    } else {
-      stateCopy.bugs[index].progress = "Completed";
+    for (var key in this.state.bugs) {
+      if (this.state.bugs[key].id === index) {
+        if (this.state.bugs[key].progress === "Not Started") {
+          prog = "In Progress";
+        } else if (this.state.bugs[key].progress == "In Progress") {
+          prog = "Completed";
+        }
+      }
     }
 
-    this.setState({
-        bugs: stateCopy.bugs
-    });
+    axios({
+      method: 'post',
+      url: server,
+      data: {
+        cases: "update_progress",
+        id: index,
+        progress: prog
+      },
+      withCredentials: true
+    })
+    .then((resp) => {
+      console.log(resp.data);
+    })
+    .catch((error) => console.log(error));
 
-    // axios({
-    //   method: 'post',
-    //   url: server,
-    //   data: {
-    //     progress: this.state.progress
-    //   },
-    //   withCredentials: true
-    // })
-    // .then((resp) => {
-    //   console.log(resp.data);
-    // })
-    // .catch((error) => console.log(error));
+    axios({
+      method: 'get',
+      url: server,
+      withCredentials: true
+    })
+    .then ((resp) => {
+      this.setState({
+        bugs: resp.data
+      });
+      console.log(this.state.bugs);
+    })
+    .catch((error) => console.log(error));
   }
 
   componentDidMount() {
@@ -76,7 +93,7 @@ class Dev extends React.Component {
               <th><div key={bug.id}>{bug.Name}</div></th>
               <th>{bug.Description}</th>
               <th>{bug.progress}</th>
-              <th><Button key={bug.id} bsStyle="success" onClick={(ev, key) => this.handleProgress(ev, index)}>Progress</Button></th>
+              {bug.progress === "Completed" ? <th><Button bsSize="large" disabled>Completed</Button></th> : <th><Button key={bug.id} bsStyle="success" onClick={(ev, key) => this.handleProgress(ev, bug.id)}>Progress</Button></th>}
             </tr>)
           }
         </table>

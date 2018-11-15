@@ -5,7 +5,8 @@ module.exports = env => {
     entry: {
       index: './src/index.js',
       manager: './src/manager.js',
-      dev: './src/dev.js'
+      dev: './src/dev.js',
+      login: './src/login.js'
     },
     module: {
       rules: [
@@ -24,6 +25,18 @@ module.exports = env => {
         {
           test: /\.css$/,
           use: ["style-loader", "css-loader"]
+        },
+        {
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          use: [
+            'file-loader',
+            {
+              loader: 'image-webpack-loader',
+              options: {
+                disable: true, // webpack@2.x and newer
+              },
+            },
+          ],
         }
       ]
     },

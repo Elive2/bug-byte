@@ -17,7 +17,7 @@ class ClientDash extends React.Component{
     super(props);
     this.state = {
       modal: false,
-      bugs: []
+      bugs: [],
     };
 
     this.toggle = this.toggle.bind(this);
@@ -47,13 +47,24 @@ class ClientDash extends React.Component{
   	event.preventDefault()
 
   	//create an obect which contains all the form data
-  	const data = new FormData(event.target)
+  	const formData = new FormData(event.target)
+  	var formObject = {};
+		formData.forEach(function(value, key){
+		    formObject[key] = value;
+		});
+
   	this.toggle()
 
   	//post the FormData object to our backend
   	fetch(server, {
   		method: 'POST',
-  		body: data,
+  		headers: {
+  			"Content-Type" : "application/json",
+  		},
+  		body: JSON.stringify({
+  			cases: "add_bug",
+  			data: formObject,
+  		})
   	}).then(response => response.json())
       .then(data => console.log(data));
   }

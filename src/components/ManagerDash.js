@@ -7,15 +7,19 @@ import {Row, Col, Jumbotron} from 'reactstrap';
 import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 import {ListGroup, ListGroupItem, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
-var server = process.env.API_URL + "bugs.php"
+var server = process.env.API_URL;
 
 class ManagerDash extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
       bugs: [],
+      devs: [],
       dropdownOpen: false
     };
+
+    this.fetchDevs = this.fetchDevs.bind(this);
+    this.fetchBugs = this.fetchBugs.bind(this);
 	}
 
   deleteBug() {
@@ -24,7 +28,21 @@ class ManagerDash extends React.Component {
 
   componentDidMount() {
   	console.log("fetching bugs from php")
-    fetch(server,
+  	this.fetchBugs()
+  	this.fetchDevs()
+  }
+
+  fetchDevs() {
+		fetch(server+'devs.php',
+		    {
+		    	method: 'GET'
+		    })
+		      .then(response => response.json())
+		      .then(data => this.setState({devs: data}))
+  }
+
+  fetchBugs() {
+    fetch(server+'bugs.php',
     {
     	method: 'GET'
     })
@@ -38,10 +56,10 @@ class ManagerDash extends React.Component {
 				<Header/>
 				<Row>
 					<Col xs="4">
-						<BugsColumn data={this.state.bugs}/>
+						<BugsColumn bugs={this.state.bugs} devs={this.state.devs}/>
 					</Col>
 					<Col xs="4">
-						<DevelopersColumn/>
+						<DevelopersColumn devs={this.state.devs} bugs={this.state.bugs}/>
 					</Col>
 					<Col xs="4">
 						<TestersColumn/>

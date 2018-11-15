@@ -10,7 +10,6 @@
 
         // Connect to database
         header("Content-Type: application/json; charset=UTF-8");
-        header('Access-Control-Allow-Origin: http://localhost:3000');
         $host = 'localhost';
         $user = 'root'; # enter your username
         $password = ''; # enter your password
@@ -24,19 +23,15 @@
         switch($request_method)
                 {
                         case 'GET':
-                                get_bugs();
+                                get_devs();
                                 break;
                         case 'POST':
                                 $request = json_decode(file_get_contents('php://input'), TRUE);
                                 $cases = $request["cases"];
-                                if ($cases == "update_progress") {
-                                        $id = $request["id"];
-                                        $progress = $request["progress"];
-                                        update_progress($id, $progress);
-                                } 
-                                elseif ($cases == "add_bug") {
-                                        //echo json_encode($request);
-                                        addBug($request["data"]);
+                                if ($cases == "assign_dev") {
+                                        $id = $request["bugID"];
+                                        $devUsername = $request["devUsername"];
+                                        assign_dev($id, $devUsername);
                                 }
                                 else {
                                         echo json_encode(array('res' => 'invalid cases field'));
@@ -57,10 +52,10 @@
                                 break;
                 }
 
-        function get_bugs()
+        function get_devs()
         {
                 global $conn;
-                $query = "SELECT * FROM bugs_dev";
+                $query = "SELECT * FROM `users` WHERE `role` LIKE 'developer'";
                 $response = array();
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
@@ -130,20 +125,20 @@
                 echo json_encode($response);
         }
 
-        function update_progress($id, $progress) {
+        function assign_dev($id, $devUsername) {
           global $conn;
 
-          $query = "UPDATE bugs_dev SET progress = '".$progress."' WHERE id = $id";
+          $query = "UPDATE bugs_dev SET developer = '".$devUsername."' WHERE id = $id";
 
           if (mysqli_query($conn, $query)) {
             $response = array(
               'status' => 1,
-              'status_message' => 'Bug Progress Update Call was successful'
+              'status_message' => 'assign_dev Call was successful'
             );
           } else {
             $response = array(
               'status' => 0,
-              'status_message' => 'Bug Progress Update Call failed.'
+              'status_message' => 'assign_dev Call failed.'
             );
           }
 

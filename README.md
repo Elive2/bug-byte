@@ -1,5 +1,10 @@
 # Bug-Byte
 
+TODO
+[x] - get form submit working with new schema
+[ ] - implement drag and drop for manager
+[ ] - php session
+
 ## Development Workflow
 
 * //get the correct version of all dependencies
@@ -60,3 +65,14 @@
 * may access all the environment varaibles of its parent, to make this safe run the
 * child process with 'env -i' to clear the environment
 
+## User Table:
+
+CREATE TABLE `users` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `bugs` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`username`, `password`, `bugs`) VALUES
+('test@scu.edu', 'test', 0);
+COMMIT;
