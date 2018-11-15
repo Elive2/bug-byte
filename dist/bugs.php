@@ -60,7 +60,7 @@
         function get_bugs()
         {
                 global $conn;
-                $query = "SELECT * FROM bugs_dev";
+                $query = "SELECT * FROM bugs_dev WHERE username = $_SESSION['username']";
                 $response = array();
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
