@@ -60,7 +60,7 @@
         function get_bugs()
         {
                 global $conn;
-                $query = "SELECT * FROM bugs_dev WHERE username = $_SESSION['username']";
+                $query = "SELECT * FROM bugs_dev WHERE creator = $_SESSION['username']";
                 $response = array();
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
@@ -80,9 +80,9 @@
                 $description = $formData["description"];
                 $program = $formData["program"];
                 $browser = $formData["browser"];
-                $username = $_SESSION['username'];
+                $creator = $_SESSION['username'];
                 $progress = 'Not Started';
-                $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress, username) VALUES ('$name',' $type',' $severity',' $description',' $program',' $browser','$progress', '$username')";
+                $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress, creator) VALUES ('$name',' $type',' $severity',' $description',' $program',' $browser','$progress', '$creator')";
                 //echo json_encode(array('query' => $query));
                 if(mysqli_query($conn, $query))
                 {
