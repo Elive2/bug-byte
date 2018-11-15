@@ -1,3 +1,10 @@
+<?php
+
+if (!$_SESSION['devLoggedIn']) {
+  header("location: login.php")
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
