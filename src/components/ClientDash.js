@@ -8,17 +8,9 @@ import { Form, FormGroup, Label, Input} from 'reactstrap';
 import {ListGroup, ListGroupItem} from 'reactstrap';
 import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 
-//TODO
-//[ ] verify posting to server works
-//[ ] load bugs associated with the user into cards
-var server = process.env.API_URL + "bugs.php"
+var server = process.env.API_URL + "bugs.php";
 
-function getCookie(name) {
-    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return v ? v[2] : null;
-}
-
-class ClientDash extends React.Component{
+class ClientDash extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
@@ -30,18 +22,22 @@ class ClientDash extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+	};
+
   toggle() {
     this.setState({
       modal: !this.state.modal
     });
   }
 
-  componentDidMount() {
-  	console.log("fetching bugs");
+  fetchBugs() {
   	axios.get(server, {
   		params: {
   			filter: "creator",
-  			value: getCookie('user')
+  			value: this.getCookie('user')
   		}
   	}).then((resp) => {
       this.setState({
@@ -52,11 +48,17 @@ class ClientDash extends React.Component{
     .catch((error) => console.log(error));
   }
 
+  componentDidMount() {
+  	console.log("fetching bugs");
+  	this.fetchBugs();
+  }
+
   handleSubmit(event) {
+  	console.log("HANDLING SUBMIT");
   	//this.toggle()
   	//prevents the default action="" from begin called, instead we handle 
   	//the submit in this custom method
-  	event.preventDefault()
+  	event.preventDefault();
 
   	//create an obect which contains all the form data
   	const formData = new FormData(event.target)
@@ -78,7 +80,10 @@ class ClientDash extends React.Component{
   			data: formObject,
   		})
   	}).then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => {
+      	console.log(data);
+      	this.fetchBugs();
+      });
   }
 
 	render() {
