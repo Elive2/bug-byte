@@ -3,6 +3,7 @@
 TODO FOR FINAL DEMO
 [x] - fix login on non incognito borwser
 [ ] - logout button
+[ ] - make severity and type not numbers
 [ ] - make elements responsive, ie bug should appere immidietly after being created
 [ ] - bug form validation
 [ ] - client can view status of bug

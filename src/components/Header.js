@@ -32,9 +32,7 @@ class Header extends React.Component{
 			          Profile
 			        </DropdownToggle>
 			        <DropdownMenu>
-			          <DropdownItem>Log Out</DropdownItem>
-			          <DropdownItem divider />
-			          <DropdownItem>Switch Users</DropdownItem>
+			          <DropdownItem><a href="logout.php">Log Out</a></DropdownItem>
 			        </DropdownMenu>
       			</Dropdown>
 					</Col>
