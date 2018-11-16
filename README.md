@@ -1,9 +1,27 @@
 # Bug-Byte
 
-TODO
-[x] - get form submit working with new schema
+TODO FOR FINAL DEMO
+[x] - fix login on non incognito borwser
+[ ] - logout button
+[ ] - make elements responsive, ie bug should appere immidietly after being created
+[ ] - bug form validation
+[ ] - client can view status of bug
+[ ] - add style to login
+[ ] - Testers?
+[ ] - test sessions and login more
+[ ] - history and reports
+[ ] - setup make command
+[ ] - installation guide
+[ ] - depoloy to server and verify everything
+
+EXTRA
 [ ] - implement drag and drop for manager
-[ ] - php session
+[ ] - add super user
+[ ] - footer
+
+TODO For final Report
+[ ] - Suggested Changes
+[ ] - Description of system implemented
 
 ## Development Workflow
 
@@ -24,7 +42,7 @@ TODO
 ## build for production
 
 * //build the app in production mode, output is placed in dist/ directory
-* npm run build
+* npm run prod
 *
 * //ssh into you design center server
 * ssh -l <username> linux.scudc.scu.edu

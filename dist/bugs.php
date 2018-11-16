@@ -1,12 +1,5 @@
 <?php
-        //TODO:
-        // [x] - Login
-        // [x] - Keep authenticated user in a SESSION variable
-        // [x] - append client First Name and Latname to bug repot query
-        // [ ] - consider using Lumen/Laravel to resturcture the api
-        //        = would be easier to protect endpoints:
-        // https://code.tutsplus.com/tutorials/how-to-secure-a-rest-api-with-lumen--cms-27442
-        //
+        session_start();
 
         // Connect to database
         header("Content-Type: application/json; charset=UTF-8");
@@ -54,20 +47,28 @@
                         default:
                                 // Invalid Request Method
                                 header("HTTP/1.0 405 Method Not Allowed");
+                                exit;
                                 break;
                 }
 
         function get_bugs()
         {
                 global $conn;
-                $query = "SELECT * FROM bugs_dev WHERE creator = $_SESSION['username']";
+                if(isset($_GET['filter'])) {
+                    $filter = $_GET['filter'];
+                    $value = $_GET['value'];
+                    $query = "SELECT * FROM bugs_dev where $filter = '$value'";
+                }
+                else {
+                    $query = "SELECT * FROM bugs_dev";
+                }
+                
                 $response = array();
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
                 {
                         $response[] = $row;
                 }
-                header('Content-Type: application/json');
                 echo json_encode($response);
         }
 

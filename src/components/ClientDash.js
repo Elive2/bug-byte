@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import axios from 'axios';
 //import logo from './logo.png'
 import { Container, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button} from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, Jumbotron} from 'reactstrap';
@@ -11,6 +12,11 @@ import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 //[ ] verify posting to server works
 //[ ] load bugs associated with the user into cards
 var server = process.env.API_URL + "bugs.php"
+
+function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+}
 
 class ClientDash extends React.Component{
 	constructor(props) {
@@ -31,13 +37,19 @@ class ClientDash extends React.Component{
   }
 
   componentDidMount() {
-  	console.log("fetching bugs")
-    fetch(server,
-    {
-    	method: 'GET'
+  	console.log("fetching bugs");
+  	axios.get(server, {
+  		params: {
+  			filter: "creator",
+  			value: getCookie('user')
+  		}
+  	}).then((resp) => {
+      this.setState({
+        bugs: resp.data
+      });
+      console.log(this.state.bugs);
     })
-      .then(response => response.json())
-      .then(data => this.setState({bugs: data}))
+    .catch((error) => console.log(error));
   }
 
   handleSubmit(event) {

@@ -5,6 +5,11 @@ import { Button } from 'react-bootstrap';
 var React = require('react');
 var server = process.env.API_URL + "bugs.php"
 
+function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+}
+
 class Dev extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +54,11 @@ class Dev extends React.Component {
     axios({
       method: 'get',
       url: server,
-      withCredentials: true
+      withCredentials: true,
+      params: {
+        filter: "developer",
+        value: getCookie('user')
+      }
     })
     .then ((resp) => {
       this.setState({
@@ -65,7 +74,11 @@ class Dev extends React.Component {
     axios({
       method: 'get',
       url: server,
-      withCredentials: true
+      withCredential: true,
+      params: {
+        filter: "developer",
+        value: getCookie('user')
+      }
     })
     .then((resp) => {
       console.log(resp.data[0].progress);

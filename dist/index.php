@@ -76,7 +76,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;  
-                            $_SESSION["type"] = $type;                          
+                            $_SESSION["type"] = $type;
+
+                            //create cookies to access usename in js
+                            $cookie_name = "user";
+                            $cookie_value = $username;
+                            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 day                    
                             
                             // Redirect user to welcome page
                             header("location: dev.php");
