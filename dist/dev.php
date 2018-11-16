@@ -1,6 +1,9 @@
 <?php
+  session_start();
+  
   if($_SESSION['loggedin'] == false || $_SESSION['type'] != 'developer') {
-    header("location: login.php");
+    header("location: index.php");
+    exit;
   }
 ?>
 

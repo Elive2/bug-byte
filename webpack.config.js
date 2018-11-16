@@ -5,8 +5,7 @@ module.exports = env => {
     entry: {
       index: './src/index.js',
       manager: './src/manager.js',
-      dev: './src/dev.js',
-      login: './src/login.js'
+      dev: './src/dev.js'
     },
     module: {
       rules: [

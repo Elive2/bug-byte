@@ -55,7 +55,7 @@
         function get_devs()
         {
                 global $conn;
-                $query = "SELECT * FROM `users` WHERE `role` LIKE 'developer'";
+                $query = "SELECT * FROM `users` WHERE `type` LIKE 'developer'";
                 $response = array();
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))

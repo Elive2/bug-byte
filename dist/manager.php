@@ -1,6 +1,8 @@
 <?php
+  session_start();
+  
   if($_SESSION['loggedin'] == false || $_SESSION['type'] != 'manager')
-    header("location: login.php")
+    header("location: index.php")
 ?>
 
 <!DOCTYPE html>

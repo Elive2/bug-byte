@@ -1,8 +1,8 @@
 <?php
         //TODO:
-        // [ ] - Login
-        // [ ] - Keep authenticated user in a SESSION variable
-        // [ ] - append client First Name and Latname to bug repot query
+        // [x] - Login
+        // [x] - Keep authenticated user in a SESSION variable
+        // [x] - append client First Name and Latname to bug repot query
         // [ ] - consider using Lumen/Laravel to resturcture the api
         //        = would be easier to protect endpoints:
         // https://code.tutsplus.com/tutorials/how-to-secure-a-rest-api-with-lumen--cms-27442

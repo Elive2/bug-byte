@@ -57,7 +57,7 @@ class BugsColumn extends React.Component {
 					        <CardBody>
 					          <CardTitle>{bugObject['Name']}</CardTitle>
 					          <CardText>
-					          	Creator: {bugObject['FirstName'] + bugObject['LastName']}<br/>
+					          	Creator: {bugObject['creator']}<br/>
 					          	Severity: {bugObject['Severity']}<br/>
 					          	Description: {bugObject['Description']}<br/>
 					          </CardText>

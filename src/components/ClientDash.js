@@ -136,7 +136,7 @@ class ClientDash extends React.Component{
 								        <CardBody>
 								          <CardTitle>{object['Name']}</CardTitle>
 								          <CardText>
-								          	Creator: {object['FirstName'] + object['LastName']}<br/>
+								          	Creator: {object['creator']}<br/>
 								          	Severity: {object['Severity']}<br/>
 								          	Description: {object['Description']}<br/>
 								          </CardText>
