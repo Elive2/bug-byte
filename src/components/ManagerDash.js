@@ -52,7 +52,7 @@ class ManagerDash extends React.Component {
 				<Header/>
 				<Row>
 					<Col xs="4">
-						<BugsColumn bugs={this.state.bugs} devs={this.state.devs} refreshBugs={this.fetchBugs} refreshDevs={this.fetchDevs}/>
+						<BugsColumn bugs={this.state.bugs} devs={this.state.devs} refreshBugs={() => this.fetchBugs()} refreshDevs={() => this.fetchDevs()}/>
 					</Col>
 					<Col xs="4">
 						<DevelopersColumn devs={this.state.devs} bugs={this.state.bugs}/>

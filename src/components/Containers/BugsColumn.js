@@ -8,18 +8,25 @@ var server = process.env.API_URL
 class BugsColumn extends React.Component {
 	constructor(props) {
 		super(props);
-		this.toggle = this.toggleDeleteModal.bind(this);
+		this.toggleDeleteModal = this.toggleDeleteModal.bind(this);
+		this.toggleAssignModal = this.toggleAssignModal.bind(this);
 		this.deleteBug = this.deleteBug.bind(this);
 		//this.asssignBug = this.assignBug.bind(this);
 		this.state = {
-			modal: false
+			deleteModal: false,
+			assignModal: false,
 		}
 	}
   toggleDeleteModal() {
     this.setState({
-      modal: !this.state.modal
+      deleteModal: !this.state.deleteModal
     });
-    this.props.refreshBugs();
+  }
+
+  toggleAssignModal() {
+  	this.setState({
+  		assignModal: !this.state.assignModal
+  	});
   }
 
   deleteBug(event, bugID) {
@@ -36,6 +43,7 @@ class BugsColumn extends React.Component {
   	  .then(data => {
   	  	console.log(data);
   	  	this.toggleDeleteModal();
+  	  	this.props.refreshBugs();
   	  })
 
   }
@@ -56,7 +64,9 @@ class BugsColumn extends React.Component {
   	}).then(response => response.json())
       .then(data => {
       	console.log(data);
+      	this.toggleAssignModal();
       	this.props.refreshDevs();
+      	this.props.refreshBugs();
       });
   }
 
@@ -65,10 +75,16 @@ class BugsColumn extends React.Component {
 			<div>
 				<Jumbotron>
 					<h3>Pending Bugs</h3>
-					<Modal isOpen={this.state.modal}>
+					<Modal isOpen={this.state.deleteModal}>
 						<ModalBody>Bug Successfully Deleted</ModalBody>
 						<ModalFooter>
 							<Button onClick={() => this.toggleDeleteModal()}>Ok</Button>
+						</ModalFooter>
+					</Modal>
+					<Modal isOpen={this.state.assignModal}>
+						<ModalBody>Bug Successfully Assigned</ModalBody>
+						<ModalFooter>
+							<Button onClick={() => this.toggleAssignModal()}>Ok</Button>
 						</ModalFooter>
 					</Modal>
 					{this.props.bugs.map((bugObject, i) => {

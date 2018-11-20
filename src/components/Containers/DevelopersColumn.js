@@ -23,7 +23,7 @@ class DevelopersColumn extends React.Component {
 				          	{this.props.bugs.map((bugObject,j) => {
 				          		if (bugObject['developer'] == devObject['username']) {
 					          		return (
-					          			<ListGroupItem>{bugObject['Name']}</ListGroupItem>
+					          			<ListGroupItem key={j}>{bugObject['Name']}</ListGroupItem>
 					          		)
 					          	}
 					          	else {
