@@ -66,65 +66,6 @@
                 echo json_encode($response);
         }
 
-        function addBug($formData)
-        {
-                global $conn;
-                $name = $formData["name"];
-                $type = $formData["type"];
-                $severity = $formData["severity"];
-                $description = $formData["description"];
-                $program = $formData["program"];
-                $browser = $formData["browser"];
-                $progress = 'Not Started';
-                $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress) VALUES ('$name',' $type',' $severity',' $description',' $program',' $browser','$progress')";
-                //echo json_encode(array('query' => $query));
-                if(mysqli_query($conn, $query))
-                {
-                        $response = array(
-                                'status' => 1,
-                                'status_message' => 'Bug Added Successfully.'
-			);
-		}
-
-		else
-		{
-			$response = array(
-				'status' => 0,
-				'status_message' => 'Bug Addition Failed.'
-			);
-		}
-
-		header('Content-Type: application/json');
-		echo json_encode($response);
-	}
-
-        function update_bugs($id)
-        {
-                global $conn;
-                $post_vars = json_decode(file_get_contents("bug_form.html"),true);
-                $assigned_developer = $post_vars["developer"];
-                $query = "UPDATE bug_devs SET developer = " . $assigned_developer . " WHERE id = " . $id;
-
-                if(mysqli_query($conn, $query))
-                {
-                        $response = array(
-                        'status' => 1,
-                        'status_message' =>'Bug Updated Successfully.'
-                        );
-                }
-
-                else
-                {
-                        $response = array(
-                        'status' => 0,
-                        'status_message' =>'Bug Update Failed.'
-                        );
-                }
-
-                header('Content-Type: application/json');
-                echo json_encode($response);
-        }
-
         function assign_dev($id, $devUsername) {
           global $conn;
 

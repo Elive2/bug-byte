@@ -16,8 +16,10 @@ class ClientDash extends React.Component {
     this.state = {
       modal: false,
       bugs: [],
+      collapse: true
     };
 
+    this.toggleDetails = this.toggleDetails.bind(this);
     this.toggle = this.toggle.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -31,6 +33,11 @@ class ClientDash extends React.Component {
     this.setState({
       modal: !this.state.modal
     });
+  }
+
+  toggleDetails() {
+  	//unused method but could be used to toggle details of a bug card
+    this.setState({ collapse: !this.state.collapse });
   }
 
   fetchBugs() {
@@ -107,11 +114,13 @@ class ClientDash extends React.Component {
 		          				<option>Syntax Error</option>
 		          				<option>Runtime Error</option>
 		          				<option>Logic Error</option>
+		          				<option>UI Glitch</option>
+		          				<option>Login Issue</option>
 		          				<option>Other</option>
 		          			</Input>
 		          		</FormGroup>
 		          		<FormGroup>
-		          			<Label for="bugSeverity"> Severity </Label>
+		          			<Label for="bugSeverity">Severity</Label>
 		          			<Input type="select" id="bugSeverity" name="severity">
 		          				<option>Low</option>
 		          				<option>Medium</option>
@@ -147,17 +156,18 @@ class ClientDash extends React.Component {
 						<Jumbotron>
 							{this.state.bugs.map(function(object, i) {
 								return (
-									<ListGroup>
+									<ListGroup key={i}>
 						        <ListGroupItem>
 						        	<Card>
 								        <CardBody>
 								          <CardTitle>{object['Name']}</CardTitle>
 								          <CardText>
+								          	Progess: {object['progress']}<br/>
 								          	Creator: {object['creator']}<br/>
 								          	Severity: {object['Severity']}<br/>
+								          	Type: {object['Type']}<br/>
 								          	Description: {object['Description']}<br/>
 								          </CardText>
-								          <Button>Details</Button>
 								        </CardBody>
 								      </Card>
 						        </ListGroupItem>

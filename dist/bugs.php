@@ -31,6 +31,10 @@
                                         //echo json_encode($request);
                                         addBug($request["data"]);
                                 }
+                                elseif ($cases = "delete_bug") {
+                                    $id = $request["bugID"];
+                                    deleteBug($id);
+                                }
                                 else {
                                         echo json_encode(array('res' => 'invalid cases field'));
                                 }
@@ -75,16 +79,15 @@
         function addBug($formData)
         {
                 global $conn;
-                $name = $formData["name"];
+                $name = htmlspecialchars(addslashes($formData["name"]));
                 $type = $formData["type"];
                 $severity = $formData["severity"];
-                $description = $formData["description"];
-                $program = $formData["program"];
+                $description = htmlspecialchars(addslashes($formData["description"]));
+                $program = htmlspecialchars(addslashes($formData["program"]));
                 $browser = $formData["browser"];
                 $creator = $_SESSION['username'];
                 $progress = 'Not Started';
-                $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress, creator) VALUES ('$name',' $type',' $severity',' $description',' $program',' $browser','$progress', '$creator')";
-                //echo json_encode(array('query' => $query));
+                $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress, creator) VALUES ('$name','$type','$severity','$description','$program','$browser','$progress', '$creator')";
                 if(mysqli_query($conn, $query))
                 {
                         $response = array(
@@ -95,9 +98,10 @@
 
 		else
 		{
+            $error = mysqli_error($conn);
 			$response = array(
 				'status' => 0,
-				'status_message' => 'Bug Addition Failed.'
+				'status_message' => $error
 			);
 		}
 
@@ -130,6 +134,29 @@
 
                 header('Content-Type: application/json');
                 echo json_encode($response);
+        }
+
+        function deleteBug($id) {
+            global $conn;
+
+            $query = "DELETE FROM `bugs_dev` WHERE `bugs_dev`.`id` = $id";
+
+            if(mysqli_query($conn, $query)) {
+                $response = array(
+                'status' => 1,
+                'status_message' =>'Bug Deleted Successfully.'
+                );
+            }
+            else
+            {
+                $response = array(
+                'status' => 0,
+                'status_message' =>'Bug Update Failed.'
+                );
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode($response);
         }
 
         function update_progress($id, $progress) {
