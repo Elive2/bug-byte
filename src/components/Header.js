@@ -26,6 +26,7 @@ class Header extends React.Component{
 						<img className="logo" src={logo}/>
 						<h2 className="name">Bug<br/>Byte </h2>
 					</Col>
+					{this.props.logout && 
 					<Col xs="6">
 						<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} id="profile">
 			        <DropdownToggle caret>
@@ -36,6 +37,7 @@ class Header extends React.Component{
 			        </DropdownMenu>
       			</Dropdown>
 					</Col>
+				  }
 				</Row>
 			</header>
 		)

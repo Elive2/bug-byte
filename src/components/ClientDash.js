@@ -96,7 +96,7 @@ class ClientDash extends React.Component {
 	render() {
 		return (
 			<div>
-				<Header/>
+				<Header logout={true}/>
 				<Row>
 					<Col sm="12" md={{ size: 1, offset: 5 }}>
 						<Button color="danger" size="lg" id="reportBug" onClick={this.toggle}>Report Bug</Button>{' '}

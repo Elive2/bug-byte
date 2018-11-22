@@ -14,7 +14,7 @@ class DevDash extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header logout={true}/>
         <Row>
           <Col sm="12" md={{ size: 6, offset: 3 }}>
             <Jumbotron>

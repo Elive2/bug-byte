@@ -48,7 +48,7 @@ class ManagerDash extends React.Component {
 	render() {
 		return (
 			<div>
-				<Header/>
+				<Header logout={true}/>
 				<Row>
 					<Col xs="4">
 						<BugsColumn bugs={this.state.bugs} devs={this.state.devs} refreshBugs={() => this.fetchBugs()} refreshDevs={() => this.fetchDevs()}/>

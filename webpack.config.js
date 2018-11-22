@@ -3,9 +3,10 @@ const webpack = require('webpack');
 module.exports = env => {
   return {
     entry: {
-      index: './src/index.js',
+      client: './src/client.js',
       manager: './src/manager.js',
-      dev: './src/dev.js'
+      dev: './src/dev.js',
+      index: './src/index.js'
     },
     module: {
       rules: [

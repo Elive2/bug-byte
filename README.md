@@ -8,7 +8,7 @@ TODO FOR FINAL DEMO
 [x] - make delte button work 
 [x] - make elements responsive, ie bug should appere immidietly after being created
 [ ] - bug form validation
-[ ] - client can view status of bug
+[x] - client can view status of bug
 [ ] - add style to login
 [ ] - Testers?
 [ ] - test sessions and login more

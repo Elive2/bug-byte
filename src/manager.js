@@ -5,8 +5,8 @@ import './index.css';
 //import App from './components/App';
 import ManagerDash from './components/ManagerDash';
 
-//when index.js is served, the below render method is called
-//which selects the root element from index.html in ../public/
+//when manager.js is served, the below render method is called
+//which selects the root element from manager.php
 document.addEventListener("DOMContentLoaded", function(event) {
     ReactDOM.render(<ManagerDash />, document.getElementById('manager'));
 	//ReactDOM.render(<DevDash />, document.getElementById('root'));
