@@ -1,7 +1,8 @@
 import React from 'react';
 import {Button, Jumbotron} from 'reactstrap';
-import {Card, CardBody, CardTitle, CardText, CardImg, Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
-import {ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import {Card, CardBody, CardTitle, CardText, Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
+import {ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Collapse} from 'reactstrap';
+import BugDetails from './BugDetails';
 
 var server = process.env.API_URL
 
@@ -30,6 +31,8 @@ class BugsColumn extends React.Component {
   }
 
   deleteBug(event, bugID) {
+  	event.preventDefault();
+
   	fetch(server+'bugs.php', {
   		method: 'POST',
   		headers: {
@@ -93,22 +96,8 @@ class BugsColumn extends React.Component {
 					        <CardBody>
 					          <CardTitle>{bugObject['Name']}</CardTitle>
 					          <CardText>
-					          	Creator: {bugObject['creator']}<br/>
-					          	Severity: {bugObject['Severity']}<br/>
-					          	Description: {bugObject['Description']}<br/>
-					          </CardText>
-					          <Button color="danger" onClick={(ev, key) => this.deleteBug(ev, bugObject['id'])} key={i}>Delete Bug</Button>{' '}
-					          <br/>
-					          <br/>
-					          {this.props.devs.map((devObject, j) => {
-							    		return (
-							    			<div key={j}>
-								    			<Button color="success" onClick={(ev, key) => this.assignBug(ev, bugObject['id'], devObject['username'])} key={bugObject['id']}>{devObject['username']}</Button>
-								    			<br/>
-								    			<br/>
-							    			</div>
-							    		)
-							    	})}
+					          	<BugDetails details={bugObject} devs={this.props.devs} assign={(event, bug, dev) => this.assignBug(event, bug, dev)} delete={(event, bug) => this.deleteBug(event, bug)}/>
+							    	</CardText>
 					        </CardBody>
 					      </Card>
 						)

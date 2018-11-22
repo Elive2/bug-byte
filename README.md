@@ -5,8 +5,8 @@ TODO FOR FINAL DEMO
 [x] - logout button
 [x] - make severity and type not numbers
 [?] - make details button reveal details
-[ ] - make delte button work 
-[ ] - make elements responsive, ie bug should appere immidietly after being created
+[x] - make delte button work 
+[x] - make elements responsive, ie bug should appere immidietly after being created
 [ ] - bug form validation
 [ ] - client can view status of bug
 [ ] - add style to login

@@ -15,7 +15,6 @@ class ManagerDash extends React.Component {
 		this.state = {
       bugs: [],
       devs: [],
-      dropdownOpen: false
     };
 
     this.fetchDevs = this.fetchDevs.bind(this);
