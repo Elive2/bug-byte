@@ -59,9 +59,11 @@
         {
                 global $conn;
                 if(isset($_GET['filter'])) {
-                    $filter = $_GET['filter'];
-                    $value = $_GET['value'];
-                    $query = "SELECT * FROM bugs_dev where $filter = '$value'";
+                    $filter1 = $_GET['filter1'];
+                    $value1 = $_GET['value1'];
+                    $filter2 = $_GET['filter2'];
+                    $value2 = $_GET['value2'];
+                    $query = "SELECT * FROM bugs_dev where $filter1 = '$value1' or $filter2 = 'value2'";
                 }
                 else {
                     $query = "SELECT * FROM bugs_dev";

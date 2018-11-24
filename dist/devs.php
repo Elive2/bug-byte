@@ -33,6 +33,12 @@
                                         $devUsername = $request["devUsername"];
                                         assign_dev($id, $devUsername);
                                 }
+                                elseif ($cases == "assign_tester") {
+                                    $id = $request["bugID"];
+                                    $devUsername = $request["devUsername"];
+                                    assign_tester($id, $devUsername);
+
+                                }
                                 else {
                                         echo json_encode(array('res' => 'invalid cases field'));
                                 }
@@ -80,6 +86,29 @@
             $response = array(
               'status' => 0,
               'status_message' => 'assign_dev Call failed.'
+            );
+          }
+
+          mysqli_error($conn);
+
+          header('Content-Type: application/json');
+          echo json_encode($response);
+        }
+
+        function assign_tester($id, $devUsername) {
+          global $conn;
+
+          $query = "UPDATE bugs_dev SET tester = '".$devUsername."' WHERE id = $id";
+
+          if (mysqli_query($conn, $query)) {
+            $response = array(
+              'status' => 1,
+              'status_message' => 'assign_tester Call was successful'
+            );
+          } else {
+            $response = array(
+              'status' => 0,
+              'status_message' => 'assign_tester Call failed.'
             );
           }
 

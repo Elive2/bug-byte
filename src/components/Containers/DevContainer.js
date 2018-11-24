@@ -56,8 +56,10 @@ class Dev extends React.Component {
       url: server,
       withCredentials: true,
       params: {
-        filter: "developer",
-        value: getCookie('user')
+        filter1: "developer",
+        value1: getCookie('user'),
+        filter2: "tester",
+        value2: getCookie('user')
       }
     })
     .then ((resp) => {
@@ -76,8 +78,10 @@ class Dev extends React.Component {
       url: server,
       withCredential: true,
       params: {
-        filter: "developer",
-        value: getCookie('user')
+        filter1: "developer",
+        value1: getCookie('user'),
+        filter2: "tester",
+        value2: getCookie('user')
       }
     })
     .then((resp) => {

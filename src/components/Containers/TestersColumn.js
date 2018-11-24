@@ -3,7 +3,7 @@ import {Jumbotron} from 'reactstrap';
 import {ListGroup, ListGroupItem} from 'reactstrap';
 import {Card, CardTitle, CardBody, CardText} from 'reactstrap';
 
-class TestersColumn extends React.Component {
+class DevelopersColumn extends React.Component {
 	constructor(props) {
 		super(props)
 	}
@@ -12,32 +12,34 @@ class TestersColumn extends React.Component {
 		return (
 			<Jumbotron>
 				<h3>Testers</h3>
-				<ListGroup>
-					<ListGroupItem>
-				  	<Card>
-				      <CardBody>
-				        <CardTitle>Bob</CardTitle>
-				        <CardText>
-				        	Assigned Bugs:
-				        </CardText>
-				      </CardBody>
-				    </Card>
-				  </ListGroupItem>
-				  <ListGroupItem>
-				  	<Card>
-				      <CardBody>
-				        <CardTitle>Susan</CardTitle>
-				        <CardText>
-				        	Assigned Bugs:
-				        </CardText>
-				      </CardBody>
-				    </Card>
-				  </ListGroupItem>
-				</ListGroup>
+				{this.props.devs.map((devObject, i) => {
+					return (
+		      	<Card key={i}>
+			        <CardBody>
+			          <CardTitle>{devObject['username']}</CardTitle>
+			          <CardText>
+			          	Assigned Bugs:
+			          	<ListGroup>
+				          	{this.props.bugs.map((bugObject,j) => {
+				          		if (bugObject['tester'] == devObject['username']) {
+					          		return (
+					          			<ListGroupItem key={j}>{bugObject['Name']}</ListGroupItem>
+					          		)
+					          	}
+					          	else {
+					          		return ('')
+					          	}
+				          	})}
+			          	</ListGroup>
+			          </CardText>
+			        </CardBody>
+			      </Card>
+					)
+				})}
 			</Jumbotron>
 		)
 	}
 }
 
-export default TestersColumn;
+export default DevelopersColumn;
 

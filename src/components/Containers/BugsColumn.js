@@ -51,6 +51,28 @@ class BugsColumn extends React.Component {
 
   }
 
+  assignTester(event, bugID, devUsername) {
+    event.preventDefault();
+    
+    fetch(server+'devs.php', {
+      method: 'POST',
+      headers: {
+        "Content-Type" : "application/json",
+      },
+      body: JSON.stringify({
+        cases: "assign_tester",
+        bugID: bugID,
+        devUsername: devUsername
+      })
+    }).then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.toggleAssignModal();
+        this.props.refreshDevs();
+        this.props.refreshBugs();
+      });
+  }
+
   assignBug(event, bugID, devUsername) {
   	event.preventDefault();
   	
@@ -96,7 +118,7 @@ class BugsColumn extends React.Component {
 					        <CardBody>
 					          <CardTitle>{bugObject['Name']}</CardTitle>
 					          <CardText>
-					          	<BugDetails details={bugObject} devs={this.props.devs} assign={(event, bug, dev) => this.assignBug(event, bug, dev)} delete={(event, bug) => this.deleteBug(event, bug)}/>
+					          	<BugDetails details={bugObject} devs={this.props.devs} tester={(event, bug, dev) => this.assignTester(event, bug, dev)} assign={(event, bug, dev) => this.assignBug(event, bug, dev)} delete={(event, bug) => this.deleteBug(event, bug)}/>
 							    	</CardText>
 					        </CardBody>
 					      </Card>

@@ -43,8 +43,10 @@ class ClientDash extends React.Component {
   fetchBugs() {
   	axios.get(server, {
   		params: {
-  			filter: "creator",
-  			value: this.getCookie('user')
+  			filter1: "creator",
+  			value1: this.getCookie('user'),
+  			fileter2: "creator",
+  			value2: this.getCookie('user'),
   		}
   	}).then((resp) => {
       this.setState({

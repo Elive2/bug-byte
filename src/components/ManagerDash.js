@@ -57,7 +57,7 @@ class ManagerDash extends React.Component {
 						<DevelopersColumn devs={this.state.devs} bugs={this.state.bugs}/>
 					</Col>
 					<Col xs="4">
-						<TestersColumn/>
+						<TestersColumn devs={this.state.devs} bugs={this.state.bugs}/>
 					</Col>	
 				</Row>
 			</div>
