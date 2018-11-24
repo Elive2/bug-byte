@@ -3,9 +3,8 @@ import Header from './Header';
 import BugsColumn from './Containers/BugsColumn';
 import DevelopersColumn from './Containers/DevelopersColumn';
 import TestersColumn from './Containers/TestersColumn';
-import {Row, Col, Jumbotron} from 'reactstrap';
-import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
-import {ListGroup, ListGroupItem, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import {Row, Col, Button, Modal, ModalHeader, ModalFooter, Jumbotron} from 'reactstrap';
+import Report from 'bv-react-data-report';
 
 var server = process.env.API_URL;
 
@@ -15,6 +14,7 @@ class ManagerDash extends React.Component {
 		this.state = {
       bugs: [],
       devs: [],
+      reportModalOpen: false
     };
 
     this.fetchDevs = this.fetchDevs.bind(this);
@@ -45,10 +45,36 @@ class ManagerDash extends React.Component {
       .then(data => this.setState({bugs: data}))
   }
 
+  toggle() {
+  	this.setState({
+  		reportModalOpen: !this.state.reportModalOpen,
+  	})
+  }
+
 	render() {
 		return (
 			<div>
 				<Header logout={true}/>
+				<Modal size="lg" isOpen={this.state.reportModalOpen}>
+					<ModalHeader>
+						Report
+					</ModalHeader>
+						<Report data={[{"test1": 1, "test2": 2}]}/>
+					<ModalFooter>
+						<Button onClick={() => this.toggle()}>Close</Button>
+					</ModalFooter>
+				</Modal>
+				<Row>
+					<Col sm="8" md={{ size: 3, offset: 5 }}>
+							<br/>
+								<Button onClick={() => this.toggle()}>Generate Devs Report</Button>
+								<br/>
+								<br/>
+								<Button onClick={() => this.toggle()}>Generate Bugs Report</Button>
+							<br/>
+							<br/>
+					</Col>
+				</Row>
 				<Row>
 					<Col xs="4">
 						<BugsColumn bugs={this.state.bugs} devs={this.state.devs} refreshBugs={() => this.fetchBugs()} refreshDevs={() => this.fetchDevs()}/>
