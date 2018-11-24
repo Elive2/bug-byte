@@ -82,6 +82,16 @@
               'status' => 1,
               'status_message' => 'assign_dev Call was successful'
             );
+
+            $dateProgressed = date("Y-m-d h:i:sa");
+            $dateString = '", \\"DevAssinged\\": ' . "$dateProgressed\"";
+            $query = "UPDATE bugs_dev SET history=concat(history, $dateString) WHERE id = $id";
+
+            if (mysqli_query($conn, $query)) {
+                $response["notes"]="DevAssinged History Successfully modified";
+            } else {
+                $response['notes']='DevAssign history modify failed';
+            }
           } else {
             $response = array(
               'status' => 0,
@@ -105,6 +115,17 @@
               'status' => 1,
               'status_message' => 'assign_tester Call was successful'
             );
+
+            $dateProgressed = date("Y-m-d h:i:sa");
+            $dateString = '", \\"TesterAssigned\\": ' . "$dateProgressed\"";
+            $query = "UPDATE bugs_dev SET history=concat(history, $dateString) WHERE id = $id";\
+
+            if (mysqli_query($conn, $query)) {
+                $response["notes"]="Tester Assign history Successfully modified";
+            } else {
+                $response['notes']='Tester ASsign history modify failed';
+            }
+
           } else {
             $response = array(
               'status' => 0,

@@ -8,17 +8,20 @@ TODO FOR FINAL DEMO
 [x] - make delte button work 
 [x] - make elements responsive, ie bug should appere immidietly after being created
 [ ] - bug form validation
+[ ] - filter pending bugs by not completed
 [x] - client can view status of bug
 [x] - add style to login
-[ ] - Testers?
+[x] - Testers?
 [x] - test sessions and login more
 [ ] - history and reports
+[ ] - dev page is showing bugs that havent been assigned
 [ ] - setup make command
 [ ] - installation guide and finalize readme
 [ ] - depoloy to server and verify everything
 
+
 EXTRA
-[no] - implement drag and drop for manager
+[ ] - implement drag and drop for manager
 [no] - add super user
 [no] - footer
 

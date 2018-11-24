@@ -45,7 +45,7 @@ class ClientDash extends React.Component {
   		params: {
   			filter1: "creator",
   			value1: this.getCookie('user'),
-  			fileter2: "creator",
+  			filter2: "creator",
   			value2: this.getCookie('user'),
   		}
   	}).then((resp) => {
