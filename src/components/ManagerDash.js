@@ -55,10 +55,17 @@ class ManagerDash extends React.Component {
 		var historyArray = [];
 		if (this.state.bugs.length > 0) {
 			for (var i = 0; i < this.state.bugs.length; i++) {
-				console.log(this.state.bugs[i]);
-				console.log(this.state.bugs[i]['history']);
-				console.log('{' + this.state.bugs[i]['history'] + '}');
-				historyArray.push(JSON.parse('{' + this.state.bugs[i]['history'] + '}'));
+				var bugInfo = {
+					"BugName": this.state.bugs[i]['Name'],
+					"Developer": this.state.bugs[i]['developer'],
+					"Tester": this.state.bugs[i]['tester'],
+				};
+				var bugInfoJson = JSON.stringify(bugInfo);
+				var bugInfoJsonStripped = bugInfoJson.replace(/{/g, "").replace(/}/g, "");
+				console.log(bugInfoJsonStripped);
+				var reportString = '{' + bugInfoJsonStripped + "," + this.state.bugs[i]['history'] + '}';
+				console.log(reportString);
+				historyArray.push(JSON.parse(reportString));
 				console.log(historyArray);
 			}
 		}
