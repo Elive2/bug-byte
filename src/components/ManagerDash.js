@@ -52,6 +52,17 @@ class ManagerDash extends React.Component {
   }
 
 	render() {
+		var historyArray = [];
+		if (this.state.bugs.length > 0) {
+			for (var i = 0; i < this.state.bugs.length; i++) {
+				console.log(this.state.bugs[i]);
+				console.log(this.state.bugs[i]['history']);
+				console.log('{' + this.state.bugs[i]['history'] + '}');
+				historyArray.push(JSON.parse('{' + this.state.bugs[i]['history'] + '}'));
+				console.log(historyArray);
+			}
+		}
+		
 		return (
 			<div>
 				<Header logout={true}/>
@@ -59,7 +70,7 @@ class ManagerDash extends React.Component {
 					<ModalHeader>
 						Report
 					</ModalHeader>
-						<Report data={[{"test1": 1, "test2": 2}]}/>
+						<Report data={historyArray}/>
 					<ModalFooter>
 						<Button onClick={() => this.toggle()}>Close</Button>
 					</ModalFooter>

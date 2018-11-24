@@ -84,7 +84,7 @@
             );
 
             $dateProgressed = date("Y-m-d h:i:sa");
-            $dateString = '", \\"DevAssinged\\": ' . "$dateProgressed\"";
+            $dateString = '", \\"DevAssigned\\": ' . '\\"' . "$dateProgressed" . '\\""' ;
             $query = "UPDATE bugs_dev SET history=concat(history, $dateString) WHERE id = $id";
 
             if (mysqli_query($conn, $query)) {
@@ -117,8 +117,8 @@
             );
 
             $dateProgressed = date("Y-m-d h:i:sa");
-            $dateString = '", \\"TesterAssigned\\": ' . "$dateProgressed\"";
-            $query = "UPDATE bugs_dev SET history=concat(history, $dateString) WHERE id = $id";\
+            $dateString = '", \\"TesterAssigned\\": ' . '\\"' . "$dateProgressed" . '\\""' ;
+            $query = "UPDATE bugs_dev SET history=concat(history, $dateString) WHERE id = $id";
 
             if (mysqli_query($conn, $query)) {
                 $response["notes"]="Tester Assign history Successfully modified";

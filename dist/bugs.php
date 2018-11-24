@@ -90,7 +90,7 @@
                 $creator = $_SESSION['username'];
                 $progress = 'Not Started';
                 $dateCreated = date("Y-m-d h:i:sa");
-                $history = "\"created\": $dateCreated";
+                $history = '\\"created\\": ' . '\\"' . "$dateCreated" . '\\"' ;
                 $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress, creator, history) VALUES ('$name','$type','$severity','$description','$program','$browser','$progress', '$creator', '$history')";
                 if(mysqli_query($conn, $query))
                 {
@@ -175,13 +175,14 @@
             );
 
             $dateProgressed = date("Y-m-d h:i:sa");
-            $dateString = '", \\"progress\\": ' . "$dateProgressed\"";
+            $dateString = '", \\"progress\\": ' . '\\"' . "$dateProgressed" . '\\""' ;
             $query = "UPDATE bugs_dev SET history=concat(history, $dateString) WHERE id = $id";
 
             if (mysqli_query($conn, $query)) {
                 $response["notes"]="history Successfully modified";
             } else {
                 $response['notes']='history modify failed';
+                mysqli_error($conn);
             }
           } else {
             $response = array(
