@@ -1,11 +1,13 @@
 import React from 'react';
-import {Card, CardBody, Collapse, Button, Table} from 'reactstrap';
+import {Card, CardBody, Collapse, Button, Table, Modal, ModalBody, ModalFooter} from 'reactstrap';
+import Report from 'bv-react-data-report';
 
 class BugDetails extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			collapse: false,
+			historyModal: false,
 		}
 	}
 
@@ -14,9 +16,33 @@ class BugDetails extends React.Component {
   	this.forceUpdate();
   }
 
+  toggleHistoryModal() {
+    this.setState({
+      historyModal: !this.state.historyModal
+    });
+    this.configureReport();
+  }
+
+  configureReport() {
+  	console.log("SWITCHING TO PROTRAIT")
+  	console.log(document.getElementsByTagName('pageFormat'));
+  	document.getElementById('pageFormat').value = 'portrait';
+  }
+
 	render() {
+		var historyJson = "{" + this.props.details['history'] + "}";
+		var historyArray = [];
+		historyArray.push(JSON.parse(historyJson));
 		return (
 			<div>
+				<Modal size="lg" isOpen={this.state.historyModal}>
+            <ModalBody>
+              <Report data={historyArray}/>
+            </ModalBody>
+            <ModalFooter>
+              <Button onClick={() => this.toggleHistoryModal()}>Ok</Button>
+            </ModalFooter>
+          </Modal>
 	      <Button onClick={() => this.toggleCollapse(this.props.details['id'])}>Details</Button>
 	      <br/>
 	      <br/>
@@ -30,6 +56,7 @@ class BugDetails extends React.Component {
 	        </Card>
 	        <br/>
       		<Button color="danger" onClick={(event) => this.props.delete(event, this.props.details['id'])}>Delete Bug</Button>{' '}
+      		<Button color="warning" onClick={(event) => this.toggleHistoryModal()}>History</Button>
 			    <br/>
 			    <br/>
 			    <Table bordered>

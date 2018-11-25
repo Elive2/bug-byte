@@ -13,8 +13,9 @@ TODO FOR FINAL DEMO
 [x] - add style to login
 [x] - Testers?
 [x] - test sessions and login more
-[ ] - history and reports
-[ ] - dev page is showing bugs that havent been assigned
+[x] - history
+[x] - reports
+[x] - dev page is showing bugs that havent been assigned
 [ ] - setup make command
 [ ] - installation guide and finalize readme
 [ ] - depoloy to server and verify everything
@@ -30,6 +31,28 @@ TODO For final Report
 [ ] - Description of system implemented
 
 ## Installation Guide
+There are two ways to install our system on an apache server with php5:
+
+1. 
+	Our system comes pre-built and bundled in the dist directory. To deploy to a server simply visit the dist folder
+	on a php compliant server. This method will use the API and database for the SCU user eyale
+
+2.
+	Our system can be built from the 'src' by any machine with npm by simply running the following command:
+```
+		make bug-byte
+```
+	This make command will invoke our npm deploy build command found in package.json. This will set all api urls relative
+	to the current directory, assemble and bundle all dependencies and output it into the 'dist' directory. It will also create the sql database tables needed. You
+
+## Project File Structure
+Our system follows the standard react projects structure. All the javascript source files are found in the 'src'
+directory, and grouped into 'Components' and 'Containers'. Each of our dashboards is served via a php page which
+containts html code and a <div> element for react to attach to. client.js, manager.js, and dev.js are where the 
+React Attachment occurs and each of these files renders the respective dashboard component. When we
+build our application, weback bundles all the javascript and dependencies and places the output in the 'dist'
+directory. The backend, api, and jasvascript bundles can be found in the 'dist' and this file is simply copied to
+our production server for deployment.
 
 ## Development Workflow
 ```

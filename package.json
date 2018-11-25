@@ -8,6 +8,7 @@
     "build": "webpack --config ./webpack.config.js --env.API_URL=http://localhost/ --mode development",
     "serve": "copyfiles -u 1 ./dist/* /Applications/XAMPP/xamppfiles/htdocs/",
     "prod": "webpack --config ./webpack.config.js --env.API_URL=http://students.engr.scu.edu/~eyale/bug-byte/ --mode production",
+    "deploy": "webpack --config ./webpack.config.js --env.API_URL=http://students.engr.scu.edu/~eyale/bug-byte/ --mode production",
     "test": "echo \"No test specified\" && exit 0"
   },
   "keywords": [],
