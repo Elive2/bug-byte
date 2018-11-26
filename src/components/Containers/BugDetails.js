@@ -25,19 +25,6 @@ class BugDetails extends React.Component {
     //this.configureReport();
   }
 
-  configureReport() {
-  	var clickToOptionMap = {
-        'click-object-1'  :  'fireaway',
-        'click-object-2'  :  'groundearth',
-        'click-object-3'  :  'watermelon',
-        'click-object-4'  :  'catchwind'
-  	};
-  	var optionId = clickToOptionMap[referrerElement.id];
-  	var optionElement = document.getElementById(optionId);
-
-  	optionElement.selected = true;
-  }
-
 	render() {
 		var historyJson = "{" + this.props.details['history'] + "}";
 		var historyArray = [];

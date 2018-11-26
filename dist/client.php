@@ -31,7 +31,7 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="index"></div>
-    <script src="/client.bundle.js"></script>
+    <script src="./client.bundle.js"></script>
 
   </body>
 </html>

@@ -33,7 +33,7 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="dev"></div>
-    <script src="/dev.bundle.js"></script>
+    <script src="./dev.bundle.js"></script>
 
   </body>
 </html>

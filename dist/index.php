@@ -125,7 +125,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div id="root">
         <!-- react attaches here for a header -->
     </div>
-    <script src="/index.bundle.js"></script>
+    <script src="./index.bundle.js"></script>
     <div class="col-md-2 col-md-offset-5">
             <h2>Login</h2>
             <p>Please fill in your credentials to login.</p>

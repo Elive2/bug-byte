@@ -57,6 +57,7 @@ class ManagerDash extends React.Component {
 			for (var i = 0; i < this.state.bugs.length; i++) {
 				var bugInfo = {
 					"BugName": this.state.bugs[i]['Name'],
+					"Type": this.state.bugs[i]['Type'],
 					"Developer": this.state.bugs[i]['developer'],
 					"Tester": this.state.bugs[i]['tester'],
 				};
