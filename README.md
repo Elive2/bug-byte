@@ -16,6 +16,8 @@ TODO FOR FINAL DEMO
 [x] - history
 [x] - reports
 [x] - dev page is showing bugs that havent been assigned
+[x] - REPORT IS IN LANDSCAPE BY DEFAULT, change this, or float report middle
+[ ] - tester bug not showing up
 [ ] - setup make command
 [ ] - installation guide and finalize readme
 [ ] - depoloy to server and verify everything
@@ -33,11 +35,11 @@ TODO For final Report
 ## Installation Guide
 There are two ways to install our system on an apache server with php5:
 
-1. 
+1. The easy way
 	Our system comes pre-built and bundled in the dist directory. To deploy to a server simply visit the dist folder
 	on a php compliant server. This method will use the API and database for the SCU user eyale
 
-2.
+2. From Source
 	Our system can be built from the 'src' by any machine with npm by simply running the following command:
 ```
 		make bug-byte

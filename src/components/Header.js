@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.png'
-import '../index.css'
+import '../index.css';
 import { Container, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
 class Header extends React.Component{

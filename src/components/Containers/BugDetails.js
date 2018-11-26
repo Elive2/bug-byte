@@ -1,6 +1,8 @@
 import React from 'react';
-import {Card, CardBody, Collapse, Button, Table, Modal, ModalBody, ModalFooter} from 'reactstrap';
+import {Card, CardBody, Collapse, Button, Table} from 'reactstrap';
+import {Modal, ModalBody, ModalFooter} from 'reactstrap';
 import Report from 'bv-react-data-report';
+import '../../index.css'
 
 class BugDetails extends React.Component {
 	constructor(props) {
@@ -20,13 +22,20 @@ class BugDetails extends React.Component {
     this.setState({
       historyModal: !this.state.historyModal
     });
-    this.configureReport();
+    //this.configureReport();
   }
 
   configureReport() {
-  	console.log("SWITCHING TO PROTRAIT")
-  	console.log(document.getElementsByTagName('pageFormat'));
-  	document.getElementById('pageFormat').value = 'portrait';
+  	var clickToOptionMap = {
+        'click-object-1'  :  'fireaway',
+        'click-object-2'  :  'groundearth',
+        'click-object-3'  :  'watermelon',
+        'click-object-4'  :  'catchwind'
+  	};
+  	var optionId = clickToOptionMap[referrerElement.id];
+  	var optionElement = document.getElementById(optionId);
+
+  	optionElement.selected = true;
   }
 
 	render() {
@@ -35,9 +44,9 @@ class BugDetails extends React.Component {
 		historyArray.push(JSON.parse(historyJson));
 		return (
 			<div>
-				<Modal size="lg" isOpen={this.state.historyModal}>
+				<Modal size="lg" isOpen={this.state.historyModal} className="historyReportModal">
             <ModalBody>
-              <Report data={historyArray}/>
+              <Report data={historyArray} id="historyReport"/>
             </ModalBody>
             <ModalFooter>
               <Button onClick={() => this.toggleHistoryModal()}>Ok</Button>

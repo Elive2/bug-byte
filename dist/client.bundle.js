@@ -403,7 +403,7 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!\n  Cop
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"header {\\n\\tbackground-color: rgb(179, 8 ,56);\\n\\tpadding: 20px 10px;\\n}\\n\\n.logo {\\n\\theight: 65px;\\n\\twidth: 65px;\\n\\tfloat: left;\\n}\\n\\n.name {\\n\\tcolor: white;\\n}\\n\\n#profile {\\n\\tposition: absolute;\\n\\tright: 100px;\\n}\\n\\n#reportBug {\\n\\tmargin-top: 20px;\\n\\tmargin-bottom: 20px;\\n}\\n\\n#draggableBug {\\n\\tz-index: 100;\\n}\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/index.css?./node_modules/css-loader");
+eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"header {\\n\\tbackground-color: rgb(179, 8 ,56);\\n\\tpadding: 20px 10px;\\n}\\n\\n.logo {\\n\\theight: 65px;\\n\\twidth: 65px;\\n\\tfloat: left;\\n}\\n\\n.name {\\n\\tcolor: white;\\n}\\n\\n#profile {\\n\\tposition: absolute;\\n\\tright: 100px;\\n}\\n\\n#reportBug {\\n\\tmargin-top: 20px;\\n\\tmargin-bottom: 20px;\\n}\\n\\n#draggableBug {\\n\\tz-index: 100;\\n}\\n\\n\\n.historyReportModal {\\n    width: 90%;\\n    height: 100%;\\n    margin: 0;\\n    padding: 0;\\n\\n}\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./src/index.css?./node_modules/css-loader");
 
 /***/ }),
 

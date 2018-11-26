@@ -73,7 +73,7 @@ class ManagerDash extends React.Component {
 		return (
 			<div>
 				<Header logout={true}/>
-				<Modal size="lg" isOpen={this.state.reportModalOpen}>
+				<Modal size="lg" isOpen={this.state.reportModalOpen} className="historyReportModal">
 					<ModalHeader>
 						Report
 					</ModalHeader>
@@ -85,8 +85,6 @@ class ManagerDash extends React.Component {
 				<Row>
 					<Col sm="8" md={{ size: 3, offset: 5 }}>
 							<br/>
-								<Button onClick={() => this.toggle()}>Generate Devs Report</Button>
-								<br/>
 								<br/>
 								<Button onClick={() => this.toggle()}>Generate Bugs Report</Button>
 							<br/>
