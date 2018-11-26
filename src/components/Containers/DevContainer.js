@@ -5,10 +5,18 @@ import { Button } from 'react-bootstrap';
 var React = require('react');
 var server = process.env.API_URL + "bugs.php"
 
+/*
+  getting session cookie
+*/
 function getCookie(name) {
     var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return v ? v[2] : null;
 }
+
+/*
+  Author: Paul Jin
+  Holds all the functionalities and looks of the Developer dashboard
+*/
 
 class Dev extends React.Component {
   constructor(props) {
@@ -19,6 +27,12 @@ class Dev extends React.Component {
     };
   }
 
+  /*
+    handleProgress() takes event and index as arguments. Event refers to the act of clicking on the progress button.
+    Index refers to the id of the bug in the database. The function will sift through the bugs within our state array "bugs".
+    It will get the bug the progress button corresponded to and then will update the progress of the bug both within the
+    dashboard and our system's database.
+  */
   handleProgress(event, index) {
     event.preventDefault();
 
@@ -71,6 +85,10 @@ class Dev extends React.Component {
     .catch((error) => console.log(error));
   }
 
+  /*
+    componentDidMount will get all of the bugs assigned to the current developer and fill in the state array "bugs"
+    with the bugs in the database. It will get these bugs once this dashboard is rendered.
+  */
   componentDidMount() {
     //populate bugs field with bugs reported
     axios({

@@ -6,6 +6,12 @@ import BugDetails from './BugDetails';
 
 var server = process.env.API_URL
 
+/*
+	Author: Eli Yale
+	
+	This will show all the bugs that have been submitted to the manager
+*/
+
 class BugsColumn extends React.Component {
 	constructor(props) {
 		super(props);
@@ -30,6 +36,11 @@ class BugsColumn extends React.Component {
   	});
   }
 
+/*
+	This function will delete a bug whenever the manager clicks the delete bug button. The arguments for it are
+	an event which is the act of clicking the button and the bugID which is the corresponding ID of the bug in our
+	database.
+*/
   deleteBug(event, bugID) {
   	event.preventDefault();
 
@@ -51,9 +62,14 @@ class BugsColumn extends React.Component {
 
   }
 
+/*
+	This will allow managers to click a button to assign a tester for a specific bug; the parameters are event, bugID, and devUsername.
+	Event is the act of clicking on the button. The function will take the bugID and devUsername and use these variables to assign the correct bug
+	to the correct tester
+*/
   assignTester(event, bugID, devUsername) {
     event.preventDefault();
-    
+
     fetch(server+'devs.php', {
       method: 'POST',
       headers: {
@@ -73,9 +89,15 @@ class BugsColumn extends React.Component {
       });
   }
 
+/*
+	This function will assign a bug to a developer. The arguments are event, bugID, and devUsername.
+	Event refers to the act of clicking the button. The function will take the corresponding bugID and devUsername when clicked
+	and access our database to find it. It will then send the correct bug to the correct developer and update fields within our
+	bug database.
+*/
   assignBug(event, bugID, devUsername) {
   	event.preventDefault();
-  	
+
   	fetch(server+'devs.php', {
   		method: 'POST',
   		headers: {
@@ -131,4 +153,3 @@ class BugsColumn extends React.Component {
 }
 
 export default BugsColumn;
-

@@ -3,6 +3,10 @@ import {Jumbotron} from 'reactstrap';
 import {ListGroup, ListGroupItem} from 'reactstrap';
 import {Card, CardTitle, CardBody, CardText} from 'reactstrap';
 
+/*
+	This will show all the testers to our Manager and will also display the bugs that the testers are working on
+*/
+
 class DevelopersColumn extends React.Component {
 	constructor(props) {
 		super(props)
@@ -42,4 +46,3 @@ class DevelopersColumn extends React.Component {
 }
 
 export default DevelopersColumn;
-
