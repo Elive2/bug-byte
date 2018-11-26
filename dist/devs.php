@@ -1,24 +1,8 @@
 <?php
-        //TODO:
-        // [ ] - Login
-        // [ ] - Keep authenticated user in a SESSION variable
-        // [ ] - append client First Name and Latname to bug repot query
-        // [ ] - consider using Lumen/Laravel to resturcture the api
-        //        = would be easier to protect endpoints:
-        // https://code.tutsplus.com/tutorials/how-to-secure-a-rest-api-with-lumen--cms-27442
-        //
 
         // Connect to database
-        header("Content-Type: application/json; charset=UTF-8");
-        $host = 'localhost';
-        $user = 'root'; # enter your username
-        $password = ''; # enter your password
-        $dbname = 'bug_byte_dev';
-
-        $conn = new mysqli($host, $user, $password, $dbname);
-        if ($conn->connect_error) {
-                echo json_encode($conn->connect_error);
-        }
+        require_once "config.php";
+        
         $request_method = $_SERVER["REQUEST_METHOD"];
         switch($request_method)
                 {
@@ -61,7 +45,7 @@
         function get_devs()
         {
                 global $conn;
-                $query = "SELECT * FROM `users` WHERE `type` LIKE 'developer'";
+                $query = "SELECT * FROM `bug_byte_users` WHERE `type` LIKE 'developer'";
                 $response = array();
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
@@ -75,7 +59,7 @@
         function assign_dev($id, $devUsername) {
           global $conn;
 
-          $query = "UPDATE bugs_dev SET developer = '".$devUsername."' WHERE id = $id";
+          $query = "UPDATE bug_byte_bugs SET developer = '".$devUsername."' WHERE id = $id";
 
           if (mysqli_query($conn, $query)) {
             $response = array(
@@ -85,7 +69,7 @@
 
             $dateProgressed = date("Y-m-d h:i:sa");
             $dateString = '", \\"DevAssigned\\": ' . '\\"' . "$dateProgressed" . '\\""' ;
-            $query = "UPDATE bugs_dev SET history=concat(history, $dateString) WHERE id = $id";
+            $query = "UPDATE bug_byte_bugs SET history=concat(history, $dateString) WHERE id = $id";
 
             if (mysqli_query($conn, $query)) {
                 $response["notes"]="DevAssinged History Successfully modified";
@@ -108,7 +92,7 @@
         function assign_tester($id, $devUsername) {
           global $conn;
 
-          $query = "UPDATE bugs_dev SET tester = '".$devUsername."' WHERE id = $id";
+          $query = "UPDATE bug_byte_bugs SET tester = '".$devUsername."' WHERE id = $id";
 
           if (mysqli_query($conn, $query)) {
             $response = array(
@@ -118,7 +102,7 @@
 
             $dateProgressed = date("Y-m-d h:i:sa");
             $dateString = '", \\"TesterAssigned\\": ' . '\\"' . "$dateProgressed" . '\\""' ;
-            $query = "UPDATE bugs_dev SET history=concat(history, $dateString) WHERE id = $id";
+            $query = "UPDATE bug_byte_bugs SET history=concat(history, $dateString) WHERE id = $id";
 
             if (mysqli_query($conn, $query)) {
                 $response["notes"]="Tester Assign history Successfully modified";

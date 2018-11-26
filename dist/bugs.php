@@ -1,18 +1,6 @@
 <?php
-        session_start();
+        require_once "config.php";
 
-        // Connect to database
-        header("Content-Type: application/json; charset=UTF-8");
-        header('Access-Control-Allow-Origin: http://localhost:3000');
-        $host = 'localhost';
-        $user = 'root'; # enter your username
-        $password = ''; # enter your password
-        $dbname = 'bug_byte_dev';
-
-        $conn = new mysqli($host, $user, $password, $dbname);
-        if ($conn->connect_error) {
-                echo json_encode($conn->connect_error);
-        }
         $request_method = $_SERVER["REQUEST_METHOD"];
         switch($request_method)
                 {
@@ -39,15 +27,6 @@
                                         echo json_encode(array('res' => 'invalid cases field'));
                                 }
                                 break;
-                        // case 'UDPATE_DEV':
-                        //         $id = ["id"]);
-                        //         update_bugs($id);
-                        //         break;
-                        // case 'UPDATE_PROGRESS':
-                        //         $id = intval($_GET["id"]);
-                        //         $progress = intval($_GET["progress"]);
-                        //         update_progress($id, $progress);
-                        //         break;
                         default:
                                 // Invalid Request Method
                                 header("HTTP/1.0 405 Method Not Allowed");
@@ -63,10 +42,10 @@
                     $value1 = $_GET['value1'];
                     $filter2 = $_GET['filter2'];
                     $value2 = $_GET['value2'];
-                    $query = "SELECT * FROM bugs_dev where $filter1 = '$value1' or $filter2 = '$value2'";
+                    $query = "SELECT * FROM bug_byte_bugs where $filter1 = '$value1' or $filter2 = '$value2'";
                 }
                 else {
-                    $query = "SELECT * FROM bugs_dev";
+                    $query = "SELECT * FROM bug_byte_bugs";
                 }
                 
                 $response = array();
@@ -91,7 +70,7 @@
                 $progress = 'Not Started';
                 $dateCreated = date("Y-m-d h:i:sa");
                 $history = '\\"created\\": ' . '\\"' . "$dateCreated" . '\\"' ;
-                $query = "INSERT INTO bugs_dev (name, type, severity, description, program, browser, progress, creator, history) VALUES ('$name','$type','$severity','$description','$program','$browser','$progress', '$creator', '$history')";
+                $query = "INSERT INTO bug_byte_bugs (name, type, severity, description, program, browser, progress, creator, history) VALUES ('$name','$type','$severity','$description','$program','$browser','$progress', '$creator', '$history')";
                 if(mysqli_query($conn, $query))
                 {
                         $response = array(
@@ -118,7 +97,7 @@
                 global $conn;
                 $post_vars = json_decode(file_get_contents("bug_form.html"),true);
                 $assigned_developer = $post_vars["developer"];
-                $query = "UPDATE bug_devs SET developer = " . $assigned_developer . " WHERE id = " . $id;
+                $query = "UPDATE bug_byte_bugs SET developer = " . $assigned_developer . " WHERE id = " . $id;
 
                 if(mysqli_query($conn, $query))
                 {
@@ -143,7 +122,7 @@
         function deleteBug($id) {
             global $conn;
 
-            $query = "DELETE FROM `bugs_dev` WHERE `bugs_dev`.`id` = $id";
+            $query = "DELETE FROM `bug_byte_bugs` WHERE `bugs_dev`.`id` = $id";
 
             if(mysqli_query($conn, $query)) {
                 $response = array(
@@ -166,7 +145,7 @@
         function update_progress($id, $progress) {
           global $conn;
 
-          $query = "UPDATE bugs_dev SET progress = '".$progress."' WHERE id = $id";
+          $query = "UPDATE bug_byte_bugs SET progress = '".$progress."' WHERE id = $id";
 
           if (mysqli_query($conn, $query)) {
             $response = array(
@@ -176,7 +155,7 @@
 
             $dateProgressed = date("Y-m-d h:i:sa");
             $dateString = '", \\"progress\\": ' . '\\"' . "$dateProgressed" . '\\""' ;
-            $query = "UPDATE bugs_dev SET history=concat(history, $dateString) WHERE id = $id";
+            $query = "UPDATE bug_byte_bugs SET history=concat(history, $dateString) WHERE id = $id";
 
             if (mysqli_query($conn, $query)) {
                 $response["notes"]="history Successfully modified";
