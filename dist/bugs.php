@@ -122,7 +122,7 @@
         function deleteBug($id) {
             global $conn;
 
-            $query = "DELETE FROM `bug_byte_bugs` WHERE `bugs_dev`.`id` = $id";
+            $query = "DELETE FROM `bug_byte_bugs` WHERE id = $id";
 
             if(mysqli_query($conn, $query)) {
                 $response = array(
