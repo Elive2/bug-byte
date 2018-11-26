@@ -10,6 +10,16 @@ import {Card, CardBody, CardTitle, CardText, CardImg} from 'reactstrap';
 
 var server = process.env.API_URL + "bugs.php";
 
+/*
+	class: Client Dash
+
+	Description: This is the component that presents the client dashboard.
+	It renders a modal for the bug from as well as all bugs reported for a given user.
+	This component expects no props and maintains the bugs array as well as modal toggles
+	in state.
+
+	Author: Eli Yale
+*/
 class ClientDash extends React.Component {
 	constructor(props) {
     super(props);
@@ -40,6 +50,15 @@ class ClientDash extends React.Component {
     this.setState({ collapse: !this.state.collapse });
   }
 
+
+  /*
+	Function: fetchBugs()
+
+	Params: none
+
+	Description: This function fetches from our api the bugs filterd by the current user
+	and sets them in state.
+  */
   fetchBugs() {
   	axios.get(server, {
   		params: {
@@ -62,6 +81,15 @@ class ClientDash extends React.Component {
   	this.fetchBugs();
   }
 
+  /*
+  	Function: handleSubmit()
+
+  	params: event //the submit event, automatically passed
+
+  	Description: This function is invoked after the user submits the form,
+  	We use custom handling so event.preventDefault is called to prevent the default
+  	action. It performs a post to our API to add the bug.
+  */
   handleSubmit(event) {
   	console.log("HANDLING SUBMIT");
   	//this.toggle()
@@ -95,6 +123,14 @@ class ClientDash extends React.Component {
       });
   }
 
+ 	/*
+		function: render()
+
+		params: none
+
+		Description: This function is invoked everytime state changes or when the component is rendered for
+		the first time.
+ 	*/
 	render() {
 		return (
 			<div>

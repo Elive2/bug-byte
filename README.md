@@ -1,43 +1,5 @@
 #### Bug-Byte
 
-TODO FOR FINAL DEMO
-[x] - fix login on non incognito borwser
-[x] - logout button
-[x] - make severity and type not numbers
-[x] - make details button reveal details
-[x] - make delte button work 
-[x] - make elements responsive, ie bug should appere immidietly after being created
-[ ] - bug form validation
-[x] - filter pending bugs by not completed
-[x] - client can view status of bug
-[x] - add style to login
-[x] - Testers?
-[x] - test sessions and login more
-[x] - history
-[x] - reports
-[x] - dev page is showing bugs that havent been assigned
-[x] - REPORT IS IN LANDSCAPE BY DEFAULT, change this, or float report middle
-[x] - change all php to config script
-[x] - tester bug not showing up
-[ ] - setup make command
-[ ] - installation guide and finalize readme
-[x] - depoloy to server and verify everything
-[x] - fix <src> paths for bundles in prod server
-[x] - delete is malfunctioning in prod
-[ ] - register .php needs to default to a client
-[ ] - devs column should show only active bugs
-[ ] - report should have a completed column
-
-
-EXTRA
-[ ] - implement drag and drop for manager
-[no] - add super user
-[no] - footer
-
-TODO For final Report
-[ ] - Suggested Changes
-[ ] - Description of system implemented
-
 ## Installation Guide
 There are two ways to install our system on an apache server with php5:
 
@@ -66,7 +28,7 @@ There are two ways to install our system on an apache server with php5:
 ```
 		make
 ```
-	This make command will invoke our 'npm run deploy' script found in package.json. This will set all api urls relative
+	This make command will invoke 'npm install' and our 'npm run deploy' script found in package.json. This will set all api urls relative
 	to the current directory, assemble and bundle all dependencies and output it into the 'dist' directory. 
 
 	Next you need to create the mysql database tables. You will be prompted to enter your database password.
@@ -82,6 +44,8 @@ There are two ways to install our system on an apache server with php5:
 	define('DB_PASSWORD', '<YOUR DB PASSWORD>');
 	define('DB_NAME', '<YOUR DB NAME>');
 ```
+
+	You should now have a working build with a database and api configured to your server.
 
 ## Project File Structure
 Our system follows the standard react projects structure. All the javascript source files are found in the 'src'
