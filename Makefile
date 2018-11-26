@@ -1,2 +1,2 @@
 production: 
-	npm run prod
+	npm run deploy

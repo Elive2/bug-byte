@@ -25,6 +25,8 @@ TODO FOR FINAL DEMO
 [x] - fix <src> paths for bundles in prod server
 [x] - delete is malfunctioning in prod
 [ ] - register .php needs to default to a client
+[ ] - devs column should show only active bugs
+[ ] - report should have a completed column
 
 
 EXTRA
@@ -61,16 +63,22 @@ There are two ways to install our system on an apache server with php5:
 ```
 		make bug-byte
 ```
-	This make command will invoke our npm build prod script found in package.json. This will set all api urls relative
+	This make command will invoke our 'npm run deploy' script found in package.json. This will set all api urls relative
 	to the current directory, assemble and bundle all dependencies and output it into the 'dist' directory. 
 
 	Next you need to create the mysql database tables. You will be prompted to enter your database password.
 
 ```
-	mysql -u <username> -p <database_name> < bug_byte_users.sql
-	mysql -u <
+	mysql -u <username> -p <database_name> < ./database/bug_byte_users.sql
+	mysql -u <username> -p <database_name> < ./database/bug_byte_bugs.sql
 ```
 	after running make, you must edit the config.php file and input your database credentials in the defines
+```
+	define('DB_SERVER', '<YOUR DB SERVER>');
+	define('DB_USERNAME', '<YOUR DB USERNAME>');
+	define('DB_PASSWORD', '<YOUR DB PASSWORD>');
+	define('DB_NAME', '<YOUR DB NAME>');
+```
 
 ## Project File Structure
 Our system follows the standard react projects structure. All the javascript source files are found in the 'src'
