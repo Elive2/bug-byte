@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2018 at 11:28 PM
+-- Generation Time: Nov 26, 2018 at 09:36 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 5.6.38
 
@@ -25,35 +25,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `bug_byte_users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `bug_byte_users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) COLLATE utf8_bin NOT NULL,
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
-  `role` varchar(255) COLLATE utf8_bin NOT NULL,
+  `type` varchar(255) COLLATE utf8_bin NOT NULL,
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `bug_byte_users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`) VALUES
-(1, 'elivyale@gmail.com', '$2y$10$fDHchi6yO1.seU3dNZ4F6eF3u0gItfPQk/ETr6miwjQbJtyBjPZgO', 'developer', '2018-11-12 01:24:35'),
-(2, 'eyale@scu.edu', '$2y$10$865Jjx1qUiEgXrIGXGlUeO6jhiYX/dbOhpRi0HsjgeWRTldxQRXy.', 'developer', '2018-11-12 08:02:12'),
-(3, 'pjin@scu.edu', '$2y$10$xuZJqhtPaHzKNmXm9M9x2.8pqZKfHeq3lEjwSxOr1pJBY23vIVEvW', 'developer', '2018-11-12 10:56:55'),
-(4, 'eli', '$2y$10$ZupKIHmzb7Zj2GY2sj.3QuabBHkqX1.NfDEru1a26fZ/3lVHh3mii', '', NULL);
+INSERT INTO `bug_byte_users` (`id`, `username`, `password`, `type`, `created_at`) VALUES
+(4, 'eli', '$2y$10$ZupKIHmzb7Zj2GY2sj.3QuabBHkqX1.NfDEru1a26fZ/3lVHh3mii', 'developer', NULL),
+(6, 'casey', '$2y$10$NKxoVMsubY2ryA2IFiFdyu.uQEJ6X2EnTQO1s0t5wABv7vizABm52', 'manager', NULL),
+(7, 'paul', '$2y$10$9o8z5PHP9wwOURqVpDmpHOvJKc1qmHZqupIGvgaW7PahDjkEDq9PO', 'client', NULL),
+(8, 'eli2', '$2y$10$9Cnp3D8JmzA4L9ozF8vtdeDYCciWqvnJQr4GVoUFevmqbIYC4Zdny', 'developer', NULL),
+(9, 'paul2', '$2y$10$ah.xRBtZq47E3PNIZbaE6.BOV2IXY2DTZ2QV//rLlIc7hQ2oZO.Ui', 'client', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `users`
+-- Indexes for table `bug_byte_users`
 --
-ALTER TABLE `users`
+ALTER TABLE `bug_byte_users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
@@ -62,10 +63,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `bug_byte_users`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `bug_byte_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -37,8 +37,14 @@ TODO For final Report
 There are two ways to install our system on an apache server with php5:
 
 1. The easy way
-	Our system comes pre-built and bundled in the dist directory. To deploy to a server simply visit the dist folder
-	on a php compliant server. This method will use the API and database for the SCU user eyale
+	Our system comes bundled, built, and configured for the SCU deisgn center servers. This build is found in the dist directory. To deploy to a server simply add our code to a directory of your choice and visit the 'dist' directory in
+	your browser.
+
+	Notes: 
+	* This method will invoke the API and database for the SCU user eyale. If you want to host the API and Databse
+	in your own directory, see method 2
+	* You may have to change file permissions for the files in the 'dist' directory
+
 
 2. From Source
 	Our system can be built from the 'src' by any machine with npm by simply running the following command:
