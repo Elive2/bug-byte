@@ -1,2 +1,2 @@
-production: 
-	npm run deploy
+production:
+	npm install & npm run prod

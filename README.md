@@ -59,9 +59,12 @@ There are two ways to install our system on an apache server with php5:
 
 
 2. From Source
-	Our system can be built from the 'src' by any machine with npm by simply running the following command:
+
+	Edit package.json and set <YOUR DEPLOYMENT SERVER HERE> to the server and subdirectory in which you will deploy your build. For Us that is http://students.engr.scu.edu/~eyale/bug-byte/
+
+	Next the system can be built from the 'src' by any machine with npm by simply running the following command:
 ```
-		make bug-byte
+		make
 ```
 	This make command will invoke our 'npm run deploy' script found in package.json. This will set all api urls relative
 	to the current directory, assemble and bundle all dependencies and output it into the 'dist' directory. 
