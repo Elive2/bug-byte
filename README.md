@@ -17,7 +17,8 @@ TODO FOR FINAL DEMO
 [x] - reports
 [x] - dev page is showing bugs that havent been assigned
 [x] - REPORT IS IN LANDSCAPE BY DEFAULT, change this, or float report middle
-[ ] - tester bug not showing up
+[ ] - change all php to config script
+[x] - tester bug not showing up
 [ ] - setup make command
 [ ] - installation guide and finalize readme
 [ ] - depoloy to server and verify everything
