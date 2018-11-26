@@ -1,4 +1,6 @@
 <?php
+/*This file is the PHP restful API that works as the back end for our web application. It uses a switch to direct request
+methods from the browswer into functions that either get bugs, delete bugs, or update the progress of a bug.*/
         session_start();
         require_once "config.php";
 
@@ -21,8 +23,8 @@
                                         addBug($request["data"]);
                                 }
                                 elseif ($cases = "delete_bug") {
-                                    $id = $request["bugID"];
-                                    deleteBug($id);
+                                      $id = $request["bugID"];
+                                      deleteBug($id);
                                 }
                                 else {
                                         echo json_encode(array('res' => 'invalid cases field'));
@@ -35,6 +37,7 @@
                                 break;
                 }
 
+        /*get_bugs gets bugs from the SQL table bug_byte_bugs to display them on the dashboards*/
         function get_bugs()
         {
                 global $conn;
@@ -48,7 +51,7 @@
                 else {
                     $query = "SELECT * FROM bug_byte_bugs";
                 }
-                
+
                 $response = array();
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
@@ -58,6 +61,8 @@
                 echo json_encode($response);
         }
 
+        /*addBug adds a new bug to the SQL table bug_byte_bugs using the bug report form data
+        (the parameter of the function)*/
         function addBug($formData)
         {
                 global $conn;
@@ -77,22 +82,24 @@
                         $response = array(
                                 'status' => 1,
                                 'status_message' => 'Bug Added Successfully.'
-			);
-		}
+          			);
+          		}
 
-		else
-		{
-            $error = mysqli_error($conn);
-			$response = array(
-				'status' => 0,
-				'status_message' => $error
-			);
-		}
+          		else
+          		{
+                      $error = mysqli_error($conn);
+          			$response = array(
+          				'status' => 0,
+          				'status_message' => $error
+          			);
+          		}
 
-		header('Content-Type: application/json');
-		echo json_encode($response);
-	}
+          		header('Content-Type: application/json');
+          		echo json_encode($response);
+        }
 
+        /*update_bugs updates the developer of a bug after the manager has assigned a bug to a developer
+        the paramter is the identification of the bug*/
         function update_bugs($id)
         {
                 global $conn;
@@ -120,6 +127,8 @@
                 echo json_encode($response);
         }
 
+        /*deleteBug deletes a bug and removes it from the table and database
+        the paramter is the identification of the bug*/
         function deleteBug($id) {
             global $conn;
 
@@ -143,6 +152,8 @@
             echo json_encode($response);
         }
 
+        /*update_progress updates the progress of a bug, whether the bug is in progress or completed
+        the paramter $id is the identification of the bug and $progress is the state of the bug*/
         function update_progress($id, $progress) {
           global $conn;
 
