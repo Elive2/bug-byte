@@ -1,4 +1,5 @@
 <?php
+        session_start();
         require_once "config.php";
 
         $request_method = $_SERVER["REQUEST_METHOD"];

@@ -8,7 +8,7 @@ TODO FOR FINAL DEMO
 [x] - make delte button work 
 [x] - make elements responsive, ie bug should appere immidietly after being created
 [ ] - bug form validation
-[ ] - filter pending bugs by not completed
+[x] - filter pending bugs by not completed
 [x] - client can view status of bug
 [x] - add style to login
 [x] - Testers?
@@ -21,9 +21,10 @@ TODO FOR FINAL DEMO
 [x] - tester bug not showing up
 [ ] - setup make command
 [ ] - installation guide and finalize readme
-[ ] - depoloy to server and verify everything
-[ ] - fix <src> paths for bundles in prod server
-[ ] - delete is malfunctioning in prod
+[x] - depoloy to server and verify everything
+[x] - fix <src> paths for bundles in prod server
+[x] - delete is malfunctioning in prod
+[ ] - register .php needs to default to a client
 
 
 EXTRA
@@ -39,11 +40,18 @@ TODO For final Report
 There are two ways to install our system on an apache server with php5:
 
 1. The easy way
-	Our system comes bundled, built, and configured for the SCU deisgn center servers. This build is found in the dist directory. To deploy to a server simply add our code to a directory of your choice and visit the 'dist' directory in
-	your browser.
+	Our system comes bundled, built, and configured for the SCU deisgn center servers. This build is found in the 'dist' directory. To deploy to a server simply copy the contents of the 'dist' directory to the folder of your choice on an apache server.
+
+	Visit this directory in your browser and login as one of the three default users
+
+	Username:   Password:	Role:
+
+	eli			password	Developer
+	casey		password	Manager
+	paul		password	Client
 
 	Notes: 
-	* This method will invoke the API and database for the SCU user eyale. If you want to host the API and Databse
+	* This method will invoke the API and database for the SCU user eyale. If you want to host the API and Database
 	in your own directory, see method 2
 	* You may have to change file permissions for the files in the 'dist' directory
 
@@ -53,8 +61,16 @@ There are two ways to install our system on an apache server with php5:
 ```
 		make bug-byte
 ```
-	This make command will invoke our npm deploy build command found in package.json. This will set all api urls relative
-	to the current directory, assemble and bundle all dependencies and output it into the 'dist' directory. It will also create the sql database tables needed. You
+	This make command will invoke our npm build prod script found in package.json. This will set all api urls relative
+	to the current directory, assemble and bundle all dependencies and output it into the 'dist' directory. 
+
+	Next you need to create the mysql database tables. You will be prompted to enter your database password.
+
+```
+	mysql -u <username> -p <database_name> < bug_byte_users.sql
+	mysql -u <
+```
+	after running make, you must edit the config.php file and input your database credentials in the defines
 
 ## Project File Structure
 Our system follows the standard react projects structure. All the javascript source files are found in the 'src'
