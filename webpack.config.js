@@ -45,7 +45,7 @@ module.exports = env => {
     },
     output: {
       path: __dirname + '/dist',
-      publicPath: '/~eyale/bug_byte/',
+      publicPath: '/~eyale/bug-byte/',
       filename: '[name].bundle.js'
     },
     plugins: [
