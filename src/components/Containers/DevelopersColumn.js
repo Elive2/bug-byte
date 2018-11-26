@@ -3,6 +3,10 @@ import {Jumbotron} from 'reactstrap';
 import {ListGroup, ListGroupItem} from 'reactstrap';
 import {Card, CardTitle, CardBody, CardText} from 'reactstrap';
 
+/*
+	This will show all of the developers to the manager and the corresponding bugs that each developer is working on
+*/
+
 class DevelopersColumn extends React.Component {
 	constructor(props) {
 		super(props)

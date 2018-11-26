@@ -4,6 +4,13 @@ import {Modal, ModalBody, ModalFooter} from 'reactstrap';
 import Report from 'bv-react-data-report';
 import '../../index.css'
 
+/*
+	Author: Eli Yale
+
+	This shows all the details associated with a particular bug when the manager clicks on the bug in the bugsColumn
+	It also contains the buttons to assign and delete
+*/
+
 class BugDetails extends React.Component {
 	constructor(props) {
 		super(props);
@@ -82,7 +89,7 @@ class BugDetails extends React.Component {
 
 		)
 	}
-	
+
 }
 
 export default BugDetails;

@@ -3,6 +3,10 @@ import Header from './Header';
 import {Row, Col, Jumbotron} from 'reactstrap';
 var React = require('react');
 
+/*
+  Author: Paul Jin
+  Will render the functionaliaties and looks of the Developer dashboard
+*/
 
 class DevDash extends React.Component {
   /*

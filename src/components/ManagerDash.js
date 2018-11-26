@@ -8,6 +8,13 @@ import Report from 'bv-react-data-report';
 
 var server = process.env.API_URL;
 
+/*
+	Author: Eli Yale
+
+	This will fetch all of the bugs and developers from our database and store them into the appropriate state values.
+	This will then render each column of the manager dashboard and pass the state values to each one via props
+*/
+
 class ManagerDash extends React.Component {
 	constructor(props) {
 		super(props);
@@ -70,7 +77,7 @@ class ManagerDash extends React.Component {
 				console.log(historyArray);
 			}
 		}
-		
+
 		return (
 			<div>
 				<Header logout={true}/>
@@ -101,7 +108,7 @@ class ManagerDash extends React.Component {
 					</Col>
 					<Col xs="4">
 						<TestersColumn devs={this.state.devs} bugs={this.state.bugs}/>
-					</Col>	
+					</Col>
 				</Row>
 			</div>
 		)
