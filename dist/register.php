@@ -64,12 +64,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
+        $defaultType = "client";
         // Prepare an insert statement
-        $sql = "INSERT INTO bug_byte_users (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO bug_byte_users (username, password, type) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $defaultType);
             
             // Set parameters
             $param_username = $username;
