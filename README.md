@@ -115,7 +115,7 @@ our production server for deployment.
 ```
  To create the database for xammp, visit localhost/phpmyadmin and import the .sql files from /database
 
- To create the database from command line
+ To create the table from command line
  mysql -u username -p database_name < bug_byte_dev.sql
 
  DB credentials should not be stored directly in the PHP script, Instead they
