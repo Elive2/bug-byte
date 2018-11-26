@@ -113,7 +113,7 @@ class BugsColumn extends React.Component {
 						</ModalFooter>
 					</Modal>
 					{this.props.bugs.map((bugObject, i) => {
-						return (
+						return (bugObject['progress'] != 'Completed' &&
 				      	<Card key={i}>
 					        <CardBody>
 					          <CardTitle>{bugObject['Name']}</CardTitle>
