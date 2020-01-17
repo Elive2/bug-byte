@@ -1,6 +1,11 @@
-#### Bug-Byte
+## Bug-Byte
 
-## Installation Guide
+### Welcome to Bug-Byte.
+
+This is the final submission for Coen 174 Software Engineering 2019 with Professor Atkinson
+at Santa Clara University 2018. Collaborators are Casey Xuereb and Paul Jin.
+
+### Installation Guide
 There are two ways to install our system on an apache server with php5:
 
 1. The easy way
@@ -47,7 +52,7 @@ There are two ways to install our system on an apache server with php5:
 
 	You should now have a working build with a database and api configured to your server.
 
-## Project File Structure
+### Project File Structure
 Our system follows the standard react projects structure. All the javascript source files are found in the 'src'
 directory, and grouped into 'Components' and 'Containers'. Each of our dashboards is served via a php page which
 containts html code and a <div> element for react to attach to. client.js, manager.js, and dev.js are where the 
@@ -56,7 +61,7 @@ build our application, weback bundles all the javascript and dependencies and pl
 directory. The backend, api, and jasvascript bundles can be found in the 'dist' and this file is simply copied to
 our production server for deployment.
 
-## Development Workflow
+### Development Workflow
 ```
  //get the correct version of all dependencies
  npm install
@@ -72,7 +77,7 @@ our production server for deployment.
 
  //visit http://localhost/phpmyadmin to view the mysql admin tool
 ```
-## build for production
+### build for production
 ```
  //build the app in production mode, output is placed in dist/ directory
  npm run prod
@@ -92,7 +97,7 @@ our production server for deployment.
  //change the file permissions to give full rwx to everyone
  chmod 777 /webpages/eyale/bug-byte/*
 ```
-## Install and configure XAMPP
+### Install and configure XAMPP
 ```
  //Visit the XAMPP website and install the 5.6.38 / PHP 5.6.38 version for mac
  
@@ -104,7 +109,7 @@ our production server for deployment.
  npm run serve
  ```
 
-## SQL Notes:
+### SQL Notes:
 ```
  To create the database for xammp, visit localhost/phpmyadmin and import the .sql files from /database
 
