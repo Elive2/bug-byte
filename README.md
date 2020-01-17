@@ -3,7 +3,12 @@
 ### Welcome to Bug-Byte.
 
 This is the final submission for Coen 174 Software Engineering 2019 with Professor Atkinson
-at Santa Clara University 2018. Collaborators are Casey Xuereb and Paul Jin.
+at Santa Clara University 2018. Collaborators are Casey Xuereb and Paul Jin. Bug Byte is a bug tracking
+system that allows a user to create a ticket to report a new software bug. Administrators can then assign the 
+bug to a developer. The developer progresses the bug through the patch lifecycle and the admin can track
+the progress. Thus there are three types of users, Reporter, Admin, and Developer. The bugs are managed
+in a MySQL database, the frontend uses React, the backend uses mainly PHP. Our system was deplyed on our
+SCU Design Center Linux machines running Apache server.
 
 ### Installation Guide
 There are two ways to install our system on an apache server with php5:
